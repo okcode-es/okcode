@@ -1,40 +1,66 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: 专业开发服务 | WordPress, Shopify, 网站, APP, 游戏开发
+description: 提供专业的WordPress、Shopify、网站、APP、游戏、小程序开发服务。分享摄影作品、旅游经历、西班牙相关指南和实用技巧。
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: 专业开发您的数字梦想
   image:
     file: ../../assets/houston.webp
   actions:
-    - text: Example Guide
+    - text: 查看开发指南
       link: /guides/example/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: 联系我们
+      link: /reference/example/
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import { ShowcaseText } from 'starlight-showcases';
 
-## Next steps
-
+## 我们的服务
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="网站开发" icon="pencil">
+		定制网站开发，包括响应式设计、SEO优化和性能提升。
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+	<Card title="WordPress开发" icon="document">
+		WordPress主题定制、插件开发、网站维护和优化。
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Shopify开发" icon="add-document">
+		Shopify商店搭建、主题定制、应用集成和电商优化。
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+	<Card title="APP开发" icon="setting">
+		移动应用开发，包括iOS和Android原生应用。
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="游戏开发" icon="open-book">
+		游戏设计和开发，从概念到发布的全程服务。
+	</Card>
+	<Card title="小程序开发" icon="rocket">
+		微信小程序、支付宝小程序等平台的小程序开发。
 	</Card>
 </CardGrid>
+
+## 个人分享
+
+<CardGrid stagger>
+	<Card title="摄影作品" icon="camera">
+		分享我的摄影作品和技巧，捕捉美好瞬间。
+	</Card>
+	<Card title="旅游指南" icon="map">
+		探索世界各地的旅游经验和实用指南。
+	</Card>
+	<Card title="西班牙相关" icon="flag">
+		关于西班牙的文化、生活和旅行建议。
+	</Card>
+</CardGrid>
+
+<ShowcaseText
+  entries={[
+    {
+      href: 'https://starlight-showcases.vercel.app/getting-started/',
+      title: 'starlight-showcases',
+      description: 'Check for broken links in your Starlight pages.',
+    },
+  ]}
+/>
