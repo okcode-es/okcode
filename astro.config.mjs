@@ -5,6 +5,32 @@ import starlightScrollToTop from 'starlight-scroll-to-top';
 
 export default defineConfig({
 	site: 'https://okcode.es',
+	head: [
+		{
+          tag: 'script',
+          attrs: {
+            src: 'https://www.googletagmanager.com/gtag/js?id=G-G63MSQ1CCE',
+            async: true,
+          },
+        },
+        {
+          tag: 'script',
+          content: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-G63MSQ1CCE');
+          `,
+        },
+		{
+			tag: 'script',
+			attrs: {
+				src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2072750546202515',
+				async: true,
+				crossorigin: 'anonymous',
+			},
+		},
+	],
 	integrations: [
 		starlight({
 			defaultLocale: 'root',
