@@ -1,0 +1,9 @@
+# 允许所有搜索引擎爬取所有内容
+User-agent: *
+Allow: /
+
+# 如果你有某些正在开发的分类不想被收录，可以取消下面的注释
+# Disallow: /guides/internal-only/
+
+# 指定站点地图位置（非常重要，有助于 SEO）
+Sitemap: https://okcode.es/sitemap-index.xml

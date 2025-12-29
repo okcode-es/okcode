@@ -1,49 +1,85 @@
-# Starlight Starter Kit: Basics
+这份 README 是为你目前的项目量身定制的，采用了职业开源项目的标准结构，重点突出了你已经实现的 **Astro 5.0**、**多语言支持** 以及 **Algolia 搜索** 等功能。
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+---
 
-```
-npm create astro@latest -- --template starlight
-```
+# OKCODE 🚀
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+**OKCODE** 是一个高性能、多语言的技术文档门户。基于最新的 [Astro](https://astro.build/) 框架与 [Starlight](https://starlight.astro.build/) 主题构建，旨在提供极致的阅读体验与精准的知识检索。
 
-## 🚀 Project Structure
+[🌐 访问在线文档](https://okcode.es)
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+---
 
-```
-.
-├── public/
+## ✨ 项目特性
+
+* **🌍 全球化多语言**：原生支持简体中文 (zh-CN)、英语 (en) 及西班牙语 (es) 切换。
+* **🔍 智能搜索**：集成 Algolia DocSearch，提供毫秒级的全文索引与搜索建议。
+* **⚡ 极致性能**：采用 Astro 5.0 Content Layer API，确保静态生成的文档加载极其迅速。
+* **📊 商业化集成**：内置 Google Analytics 4 数据统计及 Google AdSense 广告支持，并适配了单页应用路由跳转统计。
+* **🛠️ 开发者友好**：支持 MDX、代码高亮、侧边栏自动生成，并集成了“回到顶部”等增强插件。
+
+---
+
+## 🛠️ 技术栈
+
+* **核心框架**: [Astro 5.0+](https://astro.build/) (使用 `docsLoader`)
+* **文档主题**: [Starlight](https://starlight.astro.build/)
+* **搜索技术**: [Algolia DocSearch](https://docsearch.algolia.com/)
+* **内容管理**: [Content Collections](https://docs.astro.build/en/guides/content-collections/) (支持 MDX)
+* **部署平台**: [GitHub Pages](https://pages.github.com/)
+
+---
+
+## 📂 项目结构
+
+```text
+okcode/
 ├── src/
-│   ├── assets/
+│   ├── assets/             # 图片、图标等静态资源
 │   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+│   │   └── docs/           # 文档核心内容 (MDX/MD)
+│   │       ├── zh-cn/      # 简体中文文档
+│   │       ├── en/         # 英文文档
+│   │       └── es/         # 西班牙语文档
+│   └── content.config.ts   # 内容集合 Schema 配置
+├── astro.config.mjs        # Astro 与 Starlight 插件配置
+└── public/                 # 静态公开资源
+
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+---
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## 🚀 快速开始
 
-Static assets, like favicons, can be placed in the `public/` directory.
+### 1. 克隆与安装
 
-## 🧞 Commands
+```bash
+git clone https://github.com/okcode-es/okcode.git
+cd okcode
+npm install
 
-All commands are run from the root of the project, from a terminal:
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### 2. 环境配置
 
-## 👀 Want to learn more?
+在根目录创建 `.env` 文件（可选，用于存储敏感 ID）：
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+```env
+PUBLIC_ALGOLIA_APP_ID=RGT6K369RP
+PUBLIC_ALGOLIA_API_KEY=your_api_key
+
+```
+
+### 3. 开发与构建
+
+* **启动预览**: `npm run dev`
+* **生产构建**: `npm run build`
+* **本地预览构建**: `npm run preview`
+
+---
+
+## 📄 许可证
+
+本项目采用 [MIT License](https://www.google.com/search?q=LICENSE) 许可。
+
+---
