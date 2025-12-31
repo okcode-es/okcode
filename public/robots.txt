@@ -7,3 +7,5 @@ Allow: /
 
 # 指定站点地图位置（非常重要，有助于 SEO）
 Sitemap: https://okcode.es/sitemap-index.xml
+
+# Algolia-Crawler-Verif: E8051AC972A11033
