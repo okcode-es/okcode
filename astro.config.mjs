@@ -48,10 +48,10 @@ export default defineConfig({
               es: { label: 'Español', lang: 'es' },
           },
           title: 'okcode',
-          logo: {
-            src: './src/assets/logo.svg',
-            replacesTitle: false, 
-          },
+          //logo: {
+          //  src: './src/assets/logo.svg',
+            //replacesTitle: false, 
+          //},
           routeMiddleware: './src/routeData.ts',
           social: [
               { icon: 'github', label: 'GitHub', href: 'https://github.com/okcode-es' },

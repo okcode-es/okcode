@@ -24,8 +24,13 @@ const isSplash = isHomePage || Astro.props.entry?.data?.template === "splash";
     <div class="sl-flex items-center gap-2 relative">
       <Search {...Astro.props} />
 
+      {
+        isSplash && (
+          <div class="header-lang-picker">
       <LanguageSelect {...Astro.props} />
-      <ThemeSelect {...Astro.props} />
+          </div>
+        )
+      }
     </div>
 
     <div
