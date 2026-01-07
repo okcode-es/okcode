@@ -2,7 +2,6 @@
 // src/components/CustomHeader.astro
 import LanguageSelect from "@astrojs/starlight/components/LanguageSelect.astro";
 import Search from "virtual:starlight/components/Search";
-import ThemeSelect from "@astrojs/starlight/components/ThemeSelect.astro";
 import SiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
 import SocialIcons from "@astrojs/starlight/components/SocialIcons.astro";
 
@@ -27,7 +26,7 @@ const isSplash = isHomePage || Astro.props.entry?.data?.template === "splash";
       {
         isSplash && (
           <div class="header-lang-picker">
-      <LanguageSelect {...Astro.props} />
+            <LanguageSelect {...Astro.props} />
           </div>
         )
       }
