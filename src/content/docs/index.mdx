@@ -16,7 +16,7 @@ hero:
       link: '#-latest-tutorials'
       variant: secondary
     - text: Explore Tutorials
-      link: /guides/example/
+      link: /guides/tutorials
       icon: right-arrow
       variant: primary
     - text: Get in Touch
@@ -53,57 +53,30 @@ import { Badge } from '@astrojs/starlight/components';
 ## 🆕 Latest Tutorials
 <CardGrid stagger>
   <LinkCard 
-    title="Mastering WordPress Customization" 
-    description="2025 WordPress development practices: custom fields, performance optimization, and advanced security." 
-    href="/guides/wordpress-advanced/" 
+    title="Obtain Your Spanish Work History (Vida Laboral)" 
+    description="A complete guide on applying for the Spanish Vida Laboral certificate online, via SMS, or in person at the Social Security office." 
+    href="/guides/vida-laboral-application-guide" 
   />
   <LinkCard 
-    title="Getting Started with Flutter" 
-    description="Build high-performance, cross-platform mobile apps from scratch to deployment." 
-    href="/guides/flutter-intro/" 
-  />
-  <LinkCard 
-    title="Shopify Theme Best Practices" 
-    description="Master the Liquid template language and create high-converting e-commerce themes." 
-    href="/guides/shopify-themes/" 
+    title="Contact me for development services" 
+    description="Get in touch for development services and inquiries." 
+    href="/reference/services/" 
   />
 </CardGrid>
 
 ---
-
-## 🌍 Living in Spain
-
-<CardGrid>
-  <LinkCard 
-    title="Spain Essentials" 
-    description="Expert advice on visas, residency, education, and local living—helping you thrive in Spain." 
-    href="/spain/" 
-  />
-  <LinkCard 
-    title="Photography & Travels" 
-    description="Capturing the Mediterranean light and sharing travel stories and photography tips from across the globe." 
-    href="/photography/" 
-  />
-</CardGrid>
-
----
-
-## 📸 Photography Portfolio
+## 📸 Shoots
 
 <CardGrid>
-  <ShowcaseImage
-    entries={[
-      {
-        thumbnail: import('../../../src/assets/portfolio.svg'),
-        href: '/',
-        title: 'flappy bird',
-      },
-      {
-        thumbnail: import('../../../src/assets/portfolio.svg'),
-        href: '/',
-        title: 'working on it',
-      },
-    ]}
-  />
+  <Card>
+    <a href="https://www.pexels.com/@okcode-2150281490" target="_blank" rel="noopener noreferrer" className="block">
+      <img 
+        src="https://images.pexels.com/photos/35381580/pexels-photo-35381580.jpeg?auto=compress&cs=tinysrgb&w=800" 
+        alt="Photography from OKCODE Pexels Gallery" 
+        className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 w-full h-auto"
+        loading="lazy"
+      />
+    </a>
+  </Card>
 </CardGrid>
 ---

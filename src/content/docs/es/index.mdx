@@ -1,10 +1,10 @@
 ---
-title: OKCODE | Tutoriales de Desarrollo Práctico y Servicios Técnicos
-description: OKCODE es un blog técnico que documenta procesos de desarrollo, vida en España y ofrece servicios profesionales de desarrollo web, mini-programas y aplicaciones móviles.
+title: "OKCODE | Tutoriales Prácticos de Desarrollo y Servicios Técnicos"
+description: "OKCODE es un blog técnico que documenta el proceso de desarrollo, estilo de vida, y ofrece servicios profesionales de desarrollo web, mini-programas y aplicaciones móviles."
 template: splash
 hero:
   title: Documentando el Camino del Desarrollo
-  tagline: IA, Desarrollo Full-Stack y Guías de Vida en España.
+  tagline: Perspectivas sobre IA, Desarrollo Full-Stack y Vida en España.
   image:
     alt: OKCODE Hero Image
     file: ../../../../src/assets/hero.svg
@@ -15,11 +15,11 @@ hero:
     - text: 🆕 Últimos Artículos
       link: '#-últimos-tutoriales'
       variant: secondary
-    - text: Ver Tutoriales
-      link: /es/guides/example/
+    - text: Explorar Tutoriales
+      link: /es/guides/tutorials
       icon: right-arrow
       variant: primary
-    - text: Consultar Servicios
+    - text: Contactar
       link: /es/reference/services/
       icon: external
       variant: secondary
@@ -43,7 +43,7 @@ import { Badge } from '@astrojs/starlight/components';
       {
         thumbnail: import('../../../../src/assets/portfolio.svg'),
         href: '/',
-        title: 'working on it',
+        title: 'trabajando en ello',
       },
     ]}
   />
@@ -53,57 +53,30 @@ import { Badge } from '@astrojs/starlight/components';
 ## 🆕 Últimos Tutoriales
 <CardGrid stagger>
   <LinkCard 
-    title="Dominando la Personalización de WordPress" 
-    description="Prácticas de desarrollo de 2025: campos personalizados, optimización y seguridad avanzada." 
-    href="/es/guides/wordpress-advanced/" 
+    title="Obtener Tu Historial Laboral Español (Vida Laboral)" 
+    description="Una guía completa sobre cómo solicitar el certificado de Vida Laboral español en línea, por SMS o en persona en la oficina de la Seguridad Social." 
+    href="/es/guides/vida-laboral-application-guide" 
   />
   <LinkCard 
-    title="Introducción a Flutter" 
-    description="Cree aplicaciones móviles multiplataforma de alto rendimiento desde cero hasta la publicación." 
-    href="/es/guides/flutter-intro/" 
-  />
-  <LinkCard 
-    title="Mejores Prácticas en Temas Shopify" 
-    description="Domine el lenguaje Liquid y cree temas de comercio electrónico de alta conversión." 
-    href="/es/guides/shopify-themes/" 
+    title="Contáctame para servicios de desarrollo" 
+    description="Ponte en contacto para servicios de desarrollo y consultas." 
+    href="/es/reference/services/" 
   />
 </CardGrid>
 
 ---
-
-## 🌍 Vivir en España
-
-<CardGrid>
-  <LinkCard 
-    title="Guía Esencial de España" 
-    description="Consejos expertos sobre visados, residencia, educación y vida local para prosperar en España." 
-    href="/es/spain/" 
-  />
-  <LinkCard 
-    title="Fotografía y Viajes" 
-    description="Capturando la luz del Mediterráneo y compartiendo guías de viaje y técnicas fotográficas por el mundo." 
-    href="/es/photography/" 
-  />
-</CardGrid>
-
----
-
-## 📸 Portafolio Fotográfico
+## 📸 Fotografías
 
 <CardGrid>
-  <ShowcaseImage
-    entries={[
-      {
-        thumbnail: import('../../../../src/assets/portfolio.svg'),
-        href: '/',
-        title: 'flappy bird',
-      },
-      {
-        thumbnail: import('../../../../src/assets/portfolio.svg'),
-        href: '/',
-        title: 'working on it',
-      },
-    ]}
-  />
+  <Card>
+    <a href="https://www.pexels.com/@okcode-2150281490" target="_blank" rel="noopener noreferrer" className="block">
+      <img 
+        src="https://images.pexels.com/photos/35381580/pexels-photo-35381580.jpeg?auto=compress&cs=tinysrgb&w=800" 
+        alt="Fotografía de la Galería Pexels de OKCODE" 
+        className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 w-full h-auto"
+        loading="lazy"
+      />
+    </a>
+  </Card>
 </CardGrid>
 ---
