@@ -1,85 +1,73 @@
-这份 README 是为你目前的项目量身定制的，采用了职业开源项目的标准结构，重点突出了你已经实现的 **Astro 5.0**、**多语言支持** 以及 **Algolia 搜索** 等功能。
+# OKCODE
 
----
+A trilingual (中文 / Español / English) studio website for **OKCODE**, a Spain-based
+software development studio. Built with **Next.js (App Router) + React + TypeScript**
+and deployed as a **fully static site on GitHub Pages** — no server runtime.
 
-# OKCODE 🚀
+## Highlights
 
-**OKCODE** 是一个高性能、多语言的技术文档门户。基于最新的 [Astro](https://astro.build/) 框架与 [Starlight](https://starlight.astro.build/) 主题构建，旨在提供极致的阅读体验与精准的知识检索。
+- **Static export** — `output: 'export'`, `trailingSlash: true`, unoptimized images.
+  Nothing is sent to or read from a server at runtime.
+- **Three languages, one data layer** — all copy lives in
+  `src/content/site-content.ts`. Components consume typed content only, so adding a
+  service, case study, or even a new language means editing data, not markup.
+- **Clean URL structure** — `/` (English), `/es/`, `/zh-cn/`, each with its own
+  `title`, `description`, `canonical`, `hreflang` alternates, and Open Graph tags.
+- **Accessible & responsive** — semantic HTML, skip link, keyboard-operable language
+  switcher, visible focus states, `prefers-reduced-motion` support, mobile-first layout.
+- **Dark systems-studio design** — deep ink-blue surfaces, restrained blue/violet
+  accents, technical grid, status signals, responsive cards, and purposeful motion.
+  All styling lives in `src/app/globals.css`; the design context is documented in
+  `.impeccable.md`.
 
-[🌐 访问在线文档](https://okcode.es)
-
----
-
-## ✨ 项目特性
-
-* **🌍 全球化多语言**：原生支持简体中文 (zh-CN)、英语 (en) 及西班牙语 (es) 切换。
-* **🔍 智能搜索**：集成 Algolia DocSearch，提供毫秒级的全文索引与搜索建议。
-* **⚡ 极致性能**：采用 Astro 5.0 Content Layer API，确保静态生成的文档加载极其迅速。
-* **📊 商业化集成**：内置 Google Analytics 4 数据统计及 Google AdSense 广告支持，并适配了单页应用路由跳转统计。
-* **🛠️ 开发者友好**：支持 MDX、代码高亮、侧边栏自动生成，并集成了“回到顶部”等增强插件。
-
----
-
-## 🛠️ 技术栈
-
-* **核心框架**: [Astro 5.0+](https://astro.build/) (使用 `docsLoader`)
-* **文档主题**: [Starlight](https://starlight.astro.build/)
-* **搜索技术**: [Algolia DocSearch](https://docsearch.algolia.com/)
-* **内容管理**: [Content Collections](https://docs.astro.build/en/guides/content-collections/) (支持 MDX)
-* **部署平台**: [GitHub Pages](https://pages.github.com/)
-
----
-
-## 📂 项目结构
-
-```text
-okcode/
-├── src/
-│   ├── assets/             # 图片、图标等静态资源
-│   ├── content/
-│   │   └── docs/           # 文档核心内容 (MDX/MD)
-│   │       ├── zh-cn/      # 简体中文文档
-│   │       ├── en/         # 英文文档
-│   │       └── es/         # 西班牙语文档
-│   └── content.config.ts   # 内容集合 Schema 配置
-├── astro.config.mjs        # Astro 与 Starlight 插件配置
-└── public/                 # 静态公开资源
+## Project structure
 
 ```
+src/
+  app/
+    (en)/layout.tsx   # English root document shell, static lang="en"
+    (en)/page.tsx     # English home (/)
+    (en)/sitemap.ts   # generated sitemap.xml with hreflang
+    (es)/layout.tsx   # Spanish root document shell, static lang="es"
+    (es)/es/page.tsx  # Spanish home (/es/)
+    (zh-cn)/layout.tsx # Chinese root document shell, static lang="zh-CN"
+    (zh-cn)/zh-cn/page.tsx # Chinese home (/zh-cn/)
+    globals.css       # design system
+  components/         # DocumentShell, Header, Hero, LanguageSwitcher, …
+  content/site-content.ts  # ALL trilingual copy + sample data + UI labels
+  lib/i18n.ts         # locale config + routing helpers
+  lib/seo.ts          # per-locale metadata builder
+  lib/root-metadata.ts # shared root metadata
+public/               # CNAME, robots.txt, favicon.svg, og.svg, ads.txt
+.github/workflows/deploy.yml  # GitHub Pages build + deploy
+```
 
----
-
-## 🚀 快速开始
-
-### 1. 克隆与安装
+## Develop & build
 
 ```bash
-git clone https://github.com/okcode-es/okcode.git
-cd okcode
 npm install
-
+npm run dev        # local dev server (http://localhost:3000)
+npm run build      # static export -> ./out
+npm run typecheck  # tsc --noEmit
 ```
 
-### 2. 环境配置
+> Note: after changing App Router layouts or route groups, stop the running dev server
+> before restarting it. If the browser shows the page without CSS, remove the generated
+> `.next` cache and run `NODE_OPTIONS="" npm run dev` again. This is a development cache
+> issue; the source stylesheet is imported by each locale root layout and is included in
+> the static production build.
 
-在根目录创建 `.env` 文件（可选，用于存储敏感 ID）：
+## Deploy
 
-```env
-PUBLIC_ALGOLIA_APP_ID=RGT6K369RP
-PUBLIC_ALGOLIA_API_KEY=your_api_key
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which installs deps, runs
+`next build`, and publishes `./out` to GitHub Pages. The custom domain `okcode.es` is
+preserved via `public/CNAME`. No `basePath` is needed because of the custom domain.
 
-```
+## Replacing sample content
 
-### 3. 开发与构建
+The following are **clearly marked placeholders** — replace with real data:
 
-* **启动预览**: `npm run dev`
-* **生产构建**: `npm run build`
-* **本地预览构建**: `npm run preview`
-
----
-
-## 📄 许可证
-
-本项目采用 [MIT License](https://www.google.com/search?q=LICENSE) 许可。
-
----
+- `src/content/site-content.ts` → `sampleContact` (email, phone, WhatsApp, address, socials).
+- Project case studies (`projects.items`) and testimonials (`testimonials.items`) carry
+  `placeholder: true` and a visible "Sample" note in the UI.
+- Brand tagline / stats in `studio.stats` are illustrative.

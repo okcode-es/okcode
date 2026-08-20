@@ -1,26 +1,24 @@
 {
   "name": "okcode",
+  "version": "1.0.0",
+  "private": true,
   "type": "module",
-  "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.37.1",
-    "@astrojs/starlight-docsearch": "^0.6.1",
-    "@astrojs/starlight-tailwind": "^4.0.2",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.6.1",
-    "astro-og-canvas": "^0.7.2",
-    "canvas": "^3.2.0",
-    "sharp": "^0.34.2",
-    "starlight-scroll-to-top": "^0.4.0",
-    "starlight-showcases": "^0.3.1",
-    "starlight-sidebar-topics": "^0.6.2",
-    "tailwindcss": "^4.1.18"
+    "next": "^15.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.6.0"
   }
 }

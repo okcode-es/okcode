@@ -1,0 +1,7 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/es/page": "app/es/page.js",
+  "/zh-cn/page": "app/zh-cn/page.js",
+  "/page": "app/page.js"
+}

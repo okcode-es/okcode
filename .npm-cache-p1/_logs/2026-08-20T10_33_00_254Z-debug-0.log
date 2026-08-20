@@ -1,0 +1,64 @@
+0 verbose cli C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node.exe C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.7
+2 info using node@v22.22.2
+3 silly config load:file:C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\Lwh77\Desktop\workspace\okcode\.lockgen\.npmrc
+5 silly config load:file:C:\Users\Lwh77\.npmrc
+6 silly config load:file:C:\Users\Lwh77\Desktop\workspace\okcode\.lockgen\etc\npmrc
+7 verbose title npm install
+8 verbose argv "--prefix" "C:\\Users\\Lwh77\\Desktop\\workspace\\okcode\\.lockgen" "install" "--package-lock-only" "--ignore-scripts" "--offline" "--legacy-peer-deps" "--no-audit" "--no-fund" "--progress" "false"
+9 verbose logfile logs-max:10 dir:C:\Users\Lwh77\Desktop\workspace\okcode\.npm-cache-p1\_logs\2026-08-20T10_33_00_254Z-
+10 verbose logfile C:\Users\Lwh77\Desktop\workspace\okcode\.npm-cache-p1\_logs\2026-08-20T10_33_00_254Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+13 silly idealTree buildDeps
+14 silly fetch manifest next@^15.5.0
+15 silly packumentCache full:https://registry.npmjs.org/next cache-miss
+16 silly fetch manifest react@^19.0.0
+17 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+18 silly fetch manifest react-dom@^19.0.0
+19 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+20 silly fetch manifest @types/node@^22.0.0
+21 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+22 silly fetch manifest @types/react@^19.0.0
+23 silly packumentCache full:https://registry.npmjs.org/@types%2freact cache-miss
+24 silly fetch manifest @types/react-dom@^19.0.0
+25 silly packumentCache full:https://registry.npmjs.org/@types%2freact-dom cache-miss
+26 silly fetch manifest eslint@^9.39.2
+27 silly packumentCache full:https://registry.npmjs.org/eslint cache-miss
+28 silly fetch manifest eslint-config-next@^15.5.23
+29 silly packumentCache full:https://registry.npmjs.org/eslint-config-next cache-miss
+30 silly fetch manifest typescript@^5.6.0
+31 silly packumentCache full:https://registry.npmjs.org/typescript cache-miss
+32 silly placeDep ROOT @types/node@ OK for: okcode@1.0.0 want: ^22.0.0
+33 silly placeDep ROOT @types/react@ OK for: okcode@1.0.0 want: ^19.0.0
+34 silly placeDep ROOT @types/react-dom@ OK for: okcode@1.0.0 want: ^19.0.0
+35 silly placeDep ROOT eslint@ OK for: okcode@1.0.0 want: ^9.39.2
+36 silly placeDep ROOT eslint-config-next@ OK for: okcode@1.0.0 want: ^15.5.23
+37 silly placeDep ROOT next@ OK for: okcode@1.0.0 want: ^15.5.0
+38 silly placeDep ROOT okcode@1.0.0 OK for: okcode@1.0.0 want: file:..
+39 silly placeDep ROOT react@ OK for: okcode@1.0.0 want: ^19.0.0
+40 silly placeDep ROOT react-dom@ OK for: okcode@1.0.0 want: ^19.0.0
+41 silly placeDep ROOT typescript@ OK for: okcode@1.0.0 want: ^5.6.0
+42 verbose stack Error: request to https://registry.npmjs.org/@types%2fnode failed: cache mode is 'only-if-cached' but no cached response is available.
+42 verbose stack     at cacheFetch (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\make-fetch-happen\lib\cache\index.js:12:13)
+42 verbose stack     at async fetch (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\make-fetch-happen\lib\fetch.js:98:7)
+42 verbose stack     at async RegistryFetcher.packument (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\pacote\lib\registry.js:90:19)
+42 verbose stack     at async RegistryFetcher.manifest (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\pacote\lib\registry.js:128:23)
+42 verbose stack     at async #fetchManifest (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1202:20)
+42 verbose stack     at async #nodeFromEdge (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1040:19)
+42 verbose stack     at async #buildDepStep (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:904:11)
+42 verbose stack     at async Arborist.buildIdealTree (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:181:7)
+42 verbose stack     at async Arborist.reify (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:133:5)
+42 verbose stack     at async Install.exec (C:\Users\Lwh77\.workbuddy\binaries\node\versions\22.22.2\node_modules\npm\lib\commands\install.js:150:5)
+43 error code ENOTCACHED
+44 error request to https://registry.npmjs.org/@types%2fnode failed: cache mode is 'only-if-cached' but no cached response is available.
+45 silly unfinished npm timer reify 1787221982906
+46 silly unfinished npm timer reify:loadTrees 1787221982906
+47 verbose cwd C:\Users\Lwh77\Desktop\workspace\okcode
+48 verbose os Windows_NT 10.0.26200
+49 verbose node v22.22.2
+50 verbose npm  v10.9.7
+51 verbose exit 1
+52 verbose code 1
+53 error A complete log of this run can be found in: C:\Users\Lwh77\Desktop\workspace\okcode\.npm-cache-p1\_logs\2026-08-20T10_33_00_254Z-debug-0.log
