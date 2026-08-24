@@ -1,6 +1,0 @@
-# Allow all search engines to crawl the site
-User-agent: *
-Allow: /
-
-# Point crawlers at the generated sitemap
-Sitemap: https://okcode.es/sitemap.xml
