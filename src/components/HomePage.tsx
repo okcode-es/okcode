@@ -6,10 +6,13 @@ import Hero from "./Hero";
 import SectionHeading from "./SectionHeading";
 import ServiceCard from "./ServiceCard";
 import ProjectCard from "./ProjectCard";
+import TechStack from "./TechStack";
 import ProcessSteps from "./ProcessSteps";
+import FaqSection from "./FaqSection";
 import TestimonialCard from "./TestimonialCard";
 import ContactPanel from "./ContactPanel";
 import Reveal from "./Reveal";
+import JsonLd from "./JsonLd";
 
 export default function HomePage({
   content,
@@ -21,6 +24,7 @@ export default function HomePage({
   const c = content;
   return (
     <>
+      <JsonLd content={c} />
       <SiteHeader content={c} current={current} />
       <main id="main">
         <Hero content={c} />
@@ -69,8 +73,24 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 03 — Projects */}
-        <section className="section" id="projects">
+        {/* 03 — Tech Stack */}
+        <section className="section" id="stack">
+          <div className="container">
+            <Reveal>
+              <SectionHeading
+                eyebrow={c.techStack.eyebrow}
+                title={c.techStack.title}
+                intro={c.techStack.intro}
+              />
+            </Reveal>
+            <Reveal>
+              <TechStack section={c.techStack} />
+            </Reveal>
+          </div>
+        </section>
+
+        {/* 04 — Projects */}
+        <section className="section section--tint" id="projects">
           <div className="container">
             <Reveal>
               <SectionHeading
@@ -90,8 +110,8 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 04 — Advantages */}
-        <section className="section section--tint" id="advantages">
+        {/* 05 — Advantages */}
+        <section className="section" id="advantages">
           <div className="container">
             <Reveal>
               <SectionHeading
@@ -114,8 +134,8 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 05 — Process */}
-        <section className="section" id="process">
+        {/* 06 — Process */}
+        <section className="section section--tint" id="process">
           <div className="container">
             <Reveal>
               <SectionHeading
@@ -130,7 +150,23 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 06 — Client voices: keep the data ready for a later relaunch. */}
+        {/* 07 — FAQ */}
+        <section className="section" id="faq">
+          <div className="container">
+            <Reveal>
+              <SectionHeading
+                eyebrow={c.faq.eyebrow}
+                title={c.faq.title}
+                intro={c.faq.intro}
+              />
+            </Reveal>
+            <Reveal>
+              <FaqSection faq={c.faq} />
+            </Reveal>
+          </div>
+        </section>
+
+        {/* 08 — Client voices (optional) */}
         {c.visibility.testimonials && (
           <section className="section section--tint" id="testimonials">
             <div className="container">
@@ -153,7 +189,7 @@ export default function HomePage({
           </section>
         )}
 
-        {/* 07 — Contact */}
+        {/* 09 — Contact */}
         <section className="section section--ink" id="contact">
           <div className="container">
             <Reveal>
