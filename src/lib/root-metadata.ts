@@ -6,5 +6,12 @@ export const rootMetadata: Metadata = {
     default: "OKCODE — Software Studio in Spain",
     template: "%s · OKCODE",
   },
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
+

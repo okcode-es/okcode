@@ -86,12 +86,18 @@ export function IconArrow(props: IconProps) {
   );
 }
 
-export function BrandMark(props: IconProps) {
+export function BrandMark({ className, ...props }: { className?: string; [key: string]: unknown }) {
   return (
-    <svg viewBox="0 0 32 32" aria-hidden focusable="false" {...props}>
-      <rect x="1.5" y="1.5" width="29" height="29" rx="6" fill="none" stroke="currentColor" strokeWidth="2" />
-      <path d="M9 22V10l7 7 7-7v12" fill="none" stroke="var(--accent)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <img
+      src="/ok-logo-mark.webp"
+      alt="OKCODE"
+      aria-hidden="true"
+      width={32}
+      height={32}
+      className={className ?? "brand__mark"}
+      style={{ objectFit: "contain", display: "inline-block", verticalAlign: "middle" }}
+      {...props}
+    />
   );
 }
 
