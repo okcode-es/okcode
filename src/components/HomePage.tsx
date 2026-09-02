@@ -3,10 +3,11 @@ import type { Locale } from "@/lib/i18n";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import Hero from "./Hero";
+import ShowcaseGallery from "./ShowcaseGallery";
+import PricingTiers from "./PricingTiers";
 import ProjectEstimator from "./ProjectEstimator";
 import SectionHeading from "./SectionHeading";
 import ServiceCard from "./ServiceCard";
-import ProjectCard from "./ProjectCard";
 import TechStack from "./TechStack";
 import ProcessSteps from "./ProcessSteps";
 import FaqSection from "./FaqSection";
@@ -29,14 +30,10 @@ export default function HomePage({
       <JsonLd content={c} />
       <SiteHeader content={c} current={current} />
       <main id="main">
+        {/* 01 — Editorial Hero with Physics Value Playground */}
         <Hero content={c} />
 
-        {/* 01 — Interactive Scope & Project Estimator (Lead Magnet) */}
-        <Reveal>
-          <ProjectEstimator estimator={c.estimator} contact={c.contact.info} />
-        </Reveal>
-
-        {/* 02 — Studio */}
+        {/* 02 — Studio & Philosophy */}
         <section className="section" id="studio">
           <div className="container studio__grid">
             <Reveal>
@@ -60,7 +57,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 03 — Services */}
+        {/* 03 — Core Services */}
         <section className="section section--tint" id="services">
           <div className="container">
             <Reveal>
@@ -80,7 +77,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 04 — Tech Stack */}
+        {/* 04 — Architecture & Tech Stack */}
         <section className="section" id="stack">
           <div className="container">
             <Reveal>
@@ -96,28 +93,12 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 05 — Projects */}
-        <section className="section section--tint" id="projects">
-          <div className="container">
-            <Reveal>
-              <SectionHeading
-                eyebrow={c.projects.eyebrow}
-                title={c.projects.title}
-                intro={c.projects.intro}
-              />
-              <span className="projects__note">{c.projects.note}</span>
-            </Reveal>
-            <Reveal>
-              <div>
-                {c.projects.items.map((p) => (
-                  <ProjectCard key={p.id} project={p} />
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </section>
+        {/* 05 — Monos-Inspired Showcase Gallery (Flagship Works) */}
+        <Reveal>
+          <ShowcaseGallery showcase={c.showcase} />
+        </Reveal>
 
-        {/* 06 — Advantages & Guarantees */}
+        {/* 06 — Engineering Discipline & Guarantees */}
         <section className="section" id="advantages">
           <div className="container">
             <Reveal>
@@ -141,7 +122,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 07 — Process */}
+        {/* 07 — 3-Phase Process & Delivery */}
         <section className="section section--tint" id="process">
           <div className="container">
             <Reveal>
@@ -157,7 +138,19 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 08 — FAQ */}
+        {/* 08 — Transparent Pricing Benchmarks */}
+        <Reveal>
+          <PricingTiers pricing={c.pricing} contact={c.contact.info} />
+        </Reveal>
+
+        {/* 09 — Interactive Scope & Project Estimator */}
+        <div id="estimator">
+          <Reveal>
+            <ProjectEstimator estimator={c.estimator} contact={c.contact.info} />
+          </Reveal>
+        </div>
+
+        {/* 10 — FAQ */}
         <section className="section" id="faq">
           <div className="container">
             <Reveal>
@@ -173,7 +166,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 09 — Client voices (optional) */}
+        {/* 11 — Testimonials (optional) */}
         {c.visibility.testimonials && (
           <section className="section section--tint" id="testimonials">
             <div className="container">
@@ -196,7 +189,7 @@ export default function HomePage({
           </section>
         )}
 
-        {/* 10 — Contact */}
+        {/* 12 — Contact & Discovery Call */}
         <section className="section section--ink" id="contact">
           <div className="container">
             <Reveal>
