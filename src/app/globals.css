@@ -37,12 +37,14 @@
   --cyan-wash: rgba(56, 189, 248, 0.1);
   --emerald: #10b981;     /* Emerald 500 - Live Available Signal */
   --amber: #f59e0b;
+  --accent-glow: #38bdf8;
 
   /* Typography Stack */
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", "Cascadia Code", Menlo, Monaco, Consolas, monospace;
   --font-chinese: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", system-ui, -apple-system, sans-serif;
+  --font-serif: "Newsreader", "Playfair Display", "Instrument Serif", "Noto Serif", "Songti SC", "SimSun", serif;
 
   /* Type Scale */
   --step--1: 0.8125rem;
@@ -129,6 +131,14 @@ body::before {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .pricing-card:hover,
+  .showcase-card__inner:hover,
+  .showcase-card__inner:hover .showcase-card__media img {
+    transform: none !important;
+  }
+  .showcase-gallery {
     scroll-behavior: auto !important;
   }
 }
@@ -252,6 +262,14 @@ ul {
   background: linear-gradient(135deg, #ffffff 15%, #60a5fa 65%, #38bdf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.font-editorial {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--accent-glow, #38bdf8);
 }
 
 /* Skip link */
@@ -2013,6 +2031,340 @@ ul {
   border-top: 1px solid var(--line);
   color: var(--text-faint);
   font: 0.72rem var(--font-mono);
+}
+
+/* ==========================================================================
+   Physics Container & Value Lab
+   ========================================================================== */
+.physics-container {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.07), transparent 70%),
+              linear-gradient(180deg, rgba(15, 23, 42, 0.7) 0%, rgba(8, 12, 22, 0.95) 100%);
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.physics-overlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.physics-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font: 600 0.75rem var(--font-mono);
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.physics-prompt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 500 0.75rem var(--font-mono);
+  color: var(--text-muted);
+}
+
+.physics-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Horizontal Showcase Scroll-Snap Gallery
+   ========================================================================== */
+.showcase-gallery {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 12px 4px 28px 4px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.3) transparent;
+}
+
+.showcase-gallery::-webkit-scrollbar {
+  height: 6px;
+}
+
+.showcase-gallery::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.3);
+  border-radius: 999px;
+}
+
+.showcase-card {
+  flex: 0 0 88%;
+  max-width: 600px;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 1024px) {
+  .showcase-card {
+    flex: 0 0 480px;
+  }
+}
+
+.showcase-card__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.6);
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.showcase-card__inner:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+}
+
+.showcase-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0d1527;
+}
+
+.showcase-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.showcase-card__inner:hover .showcase-card__media img {
+  transform: scale(1.03);
+}
+
+.showcase-card__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px;
+  gap: 16px;
+}
+
+.showcase-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.showcase-card__client {
+  font: 600 0.82rem var(--font-mono);
+  color: var(--cyan);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.showcase-card__industry {
+  font: 500 0.75rem var(--font-mono);
+  color: var(--text-faint);
+}
+
+.showcase-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.showcase-card__summary {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  flex: 1;
+}
+
+.showcase-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.showcase-card__tag {
+  font: 500 0.72rem var(--font-mono);
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+}
+
+.showcase-card__metrics {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.showcase-card__metrics-val {
+  font: 700 1.25rem var(--font-mono);
+  color: var(--cyan);
+}
+
+.showcase-card__metrics-lbl {
+  font: 500 0.75rem var(--font-mono);
+  color: var(--text-soft);
+}
+
+/* ==========================================================================
+   Pricing Grid & Tier Cards
+   ========================================================================== */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 32px 24px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+}
+
+.pricing-card--highlight {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.1), transparent 75%),
+              rgba(15, 23, 42, 0.85);
+  box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.15), inset 0 1px 0 rgba(56, 189, 248, 0.3);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #ffffff;
+  font: 700 0.7rem var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.pricing-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pricing-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pricing-card__price {
+  font: 700 2rem var(--font-mono);
+  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.pricing-card__period {
+  font: 400 0.85rem var(--font-mono);
+  color: var(--text-muted);
+}
+
+.pricing-card__summary {
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  min-height: 2.8em;
+}
+
+.pricing-card__deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.pricing-card__deliverable {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  line-height: 1.45;
+}
+
+.pricing-card__deliverable-icon {
+  color: var(--cyan);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.pricing-card__footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pricing-card__timeline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 500 0.75rem var(--font-mono);
+  color: var(--text-muted);
+}
+
+.pricing-card .btn {
+  width: 100%;
 }
 
 /* ==========================================================================
