@@ -1,4 +1,5 @@
 import type { Locale } from "../lib/i18n";
+export type { Locale };
 
 // ---------------------------------------------------------------------------
 // Types
@@ -106,16 +107,77 @@ export interface HeroInteractiveData {
   tabs: HeroSolutionTab[];
 }
 
+export interface PhysicsItem {
+  id: string;
+  label: string;
+  type: "pill" | "badge";
+  icon?: string;
+}
+
+export interface PhysicsPlaygroundData {
+  badge: string;
+  instruction: string;
+  items: PhysicsItem[];
+}
+
 export interface HeroData {
   eyebrow: string;
   title: string;
   titleHighlight?: string;
+  editorialTitle?: {
+    prefix: string;
+    serif: string;
+    suffix: string;
+  };
   subtitle: string;
   badges: string[];
   primaryCta: string;
   secondaryCta: string;
   trust: string;
   interactive: HeroInteractiveData;
+  physics: PhysicsPlaygroundData;
+}
+
+export interface PricingTier {
+  id: string;
+  name: string;
+  highlight: boolean;
+  priceStarting: string;
+  period: string;
+  summary: string;
+  deliverables: string[];
+  timeline: string;
+  cta: string;
+}
+
+export interface PricingSectionData {
+  eyebrow: string;
+  title: string;
+  titleHighlight: string;
+  intro: string;
+  tiers: PricingTier[];
+  estimatorNote: string;
+}
+
+export interface ShowcaseItem {
+  id: string;
+  title: string;
+  client: string;
+  industry: string;
+  summary: string;
+  image: string;
+  tags: string[];
+  metrics: string;
+  metricsLabel: string;
+  href?: string;
+}
+
+export interface ShowcaseSectionData {
+  eyebrow: string;
+  title: string;
+  titleHighlight: string;
+  intro: string;
+  items: ShowcaseItem[];
 }
 
 export interface EstimatorProjectType {
@@ -211,6 +273,8 @@ export interface SiteContent {
   nav: NavItem[];
   ctaLabel: string; // header / shared primary call-to-action
   hero: HeroData;
+  pricing: PricingSectionData;
+  showcase: ShowcaseSectionData;
   estimator: EstimatorData;
   studio: {
     eyebrow: string;
@@ -331,6 +395,11 @@ const en: SiteContent = {
   ctaLabel: "Request a Quote",
   hero: {
     eyebrow: "Accepting new projects · Studio in Madrid, Spain",
+    editorialTitle: {
+      prefix: "Crafting",
+      serif: "exceptional",
+      suffix: "software for brands ready to lead.",
+    },
     title: "Custom websites, mobile apps and e-commerce stores",
     titleHighlight: "engineered to scale your revenue.",
     subtitle:
@@ -439,6 +508,121 @@ const en: SiteContent = {
         },
       ],
     },
+    physics: {
+      badge: "STUDIO VALUE LAB",
+      instruction: "Drag and flick to explore client value tokens",
+      items: [
+        { id: "uptime", label: "99.9% Uptime", type: "pill" },
+        { id: "seo", label: "SEO 100", type: "pill" },
+        { id: "zero-bug", label: "0-Bug Deploy", type: "pill" },
+        { id: "fast-ux", label: "Fast UX (<50ms)", type: "pill" },
+        { id: "scale", label: "Global Scale", type: "pill" },
+        { id: "conversion", label: "High Conversion", type: "pill" },
+        { id: "code", label: "{ }", type: "badge" },
+        { id: "rocket", label: "🚀", type: "badge" },
+      ],
+    },
+  },
+  showcase: {
+    eyebrow: "05 — Selected Works",
+    title: "Featured Engineering",
+    titleHighlight: "Showcase",
+    intro: "High-impact digital systems built for measurable business growth.",
+    items: [
+      {
+        id: "fintech",
+        title: "Enterprise Trading & Risk Engine",
+        client: "QuantEdge Global",
+        industry: "FinTech & SaaS",
+        summary: "Sub-millisecond latency order routing and live risk intelligence dashboard built on Next.js.",
+        image: "/images/FinTech.webp",
+        tags: ["Next.js", "TypeScript", "WebSocket"],
+        metrics: "+18.4%",
+        metricsLabel: "Execution Efficiency",
+      },
+      {
+        id: "luxury-store",
+        title: "Bespoke Headless Commerce",
+        client: "Maison Éthique",
+        industry: "E-Commerce",
+        summary: "Editorial luxury shopping experience with instant page loads, multi-currency Stripe checkout, and 100 SEO score.",
+        image: "/images/Store.webp",
+        tags: ["Headless", "Stripe", "Next.js"],
+        metrics: "+140%",
+        metricsLabel: "Mobile Conversion",
+      },
+      {
+        id: "ai-workflow",
+        title: "Autonomous Agent Orchestrator",
+        client: "CognitiveFlow AI",
+        industry: "Artificial Intelligence",
+        summary: "Visual node-based agent canvas managing enterprise LLM workflows and multi-agent coordination.",
+        image: "/images/CognitiveFlow.webp",
+        tags: ["AI Agents", "React Flow", "Full-Stack"],
+        metrics: "10x",
+        metricsLabel: "Workflow Speedup",
+      },
+    ],
+  },
+  pricing: {
+    eyebrow: "06 — Transparent Pricing",
+    title: "Engineering-First",
+    titleHighlight: "Investment",
+    intro: "Transparent starting benchmarks. For custom scoping, use our interactive estimator below.",
+    estimatorNote: "Need custom enterprise scoping, legacy migration, or tailored milestones? Use our calculator below.",
+    tiers: [
+      {
+        id: "showcase",
+        name: "Showcase & Brand Web",
+        highlight: false,
+        priceStarting: "Desde 1,800€",
+        period: "one-time",
+        summary: "High-performance brand web with editorial typography, trilingual architecture, and interactive physics.",
+        deliverables: [
+          "Editorial typography & bespoke design",
+          "Trilingual (EN / ES / ZH) static setup",
+          "100/100 Lighthouse SEO & Performance",
+          "Physics value playground micro-interactions",
+          "GitHub Pages static zero-maintenance host",
+        ],
+        timeline: "1-2 Weeks",
+        cta: "Book a Discovery Call",
+      },
+      {
+        id: "ecommerce",
+        name: "High-Conversion E-Commerce",
+        highlight: true,
+        priceStarting: "Desde 3,800€",
+        period: "one-time",
+        summary: "Headless store built for speed and global conversion with multi-currency Stripe checkout.",
+        deliverables: [
+          "Headless storefront with ultra-fast UX",
+          "Stripe & global multi-currency checkout",
+          "Product catalog & inventory synchronization",
+          "GDPR compliance & legal privacy setup",
+          "Conversion-optimized checkout drawer",
+        ],
+        timeline: "3-4 Weeks",
+        cta: "Start Project",
+      },
+      {
+        id: "webapp",
+        name: "Custom Web App & SaaS",
+        highlight: false,
+        priceStarting: "Desde 6,500€",
+        period: "milestone-based",
+        summary: "End-to-end full-stack digital product with complex state, authentication, and custom APIs.",
+        deliverables: [
+          "Scalable architecture & database design",
+          "Role-based authentication & admin panel",
+          "AI agent & workflow automation integration",
+          "Real-time data feeds & custom REST/GraphQL",
+          "Dedicated SLA & ongoing evolution retainer",
+        ],
+        timeline: "4-8 Weeks",
+        cta: "Schedule Architecture Review",
+      },
+    ],
   },
   estimator: {
     eyebrow: "Interactive Project Estimator",
@@ -901,6 +1085,11 @@ const es: SiteContent = {
   ctaLabel: "Pedir Presupuesto",
   hero: {
     eyebrow: "Aceptando nuevos proyectos · Estudio en Madrid, España",
+    editorialTitle: {
+      prefix: "Diseñamos software",
+      serif: "excepcional",
+      suffix: "para marcas que buscan liderar.",
+    },
     title: "Desarrollo web, apps móviles y tiendas online",
     titleHighlight: "que multiplican tus ventas.",
     subtitle:
@@ -1009,6 +1198,121 @@ const es: SiteContent = {
         },
       ],
     },
+    physics: {
+      badge: "LABORATORIO DE VALOR",
+      instruction: "Arrastra y lanza los tokens de valor comercial",
+      items: [
+        { id: "uptime", label: "99.9% Uptime", type: "pill" },
+        { id: "seo", label: "SEO 100", type: "pill" },
+        { id: "zero-bug", label: "Despliegue 0-Bug", type: "pill" },
+        { id: "fast-ux", label: "UX Ultrarrápida (<50ms)", type: "pill" },
+        { id: "scale", label: "Escala Global", type: "pill" },
+        { id: "conversion", label: "Alta Conversión", type: "pill" },
+        { id: "code", label: "{ }", type: "badge" },
+        { id: "rocket", label: "🚀", type: "badge" },
+      ],
+    },
+  },
+  showcase: {
+    eyebrow: "05 — Proyectos Destacados",
+    title: "Ingeniería de Alto",
+    titleHighlight: "Impacto",
+    intro: "Sistemas digitales diseñados para generar un impacto comercial medible.",
+    items: [
+      {
+        id: "fintech",
+        title: "Motor de Trading y Riesgo Corporativo",
+        client: "QuantEdge Global",
+        industry: "FinTech y SaaS",
+        summary: "Enrutamiento de órdenes con latencia sub-milisegundo y panel de riesgo en tiempo real con Next.js.",
+        image: "/images/FinTech.webp",
+        tags: ["Next.js", "TypeScript", "WebSocket"],
+        metrics: "+18.4%",
+        metricsLabel: "Eficiencia de Ejecución",
+      },
+      {
+        id: "luxury-store",
+        title: "Comercio Headless a Medida",
+        client: "Maison Éthique",
+        industry: "Comercio Electrónico",
+        summary: "Experiencia editorial de lujo con carga instantánea, pago multidivisa con Stripe y 100 en SEO.",
+        image: "/images/Store.webp",
+        tags: ["Headless", "Stripe", "Next.js"],
+        metrics: "+140%",
+        metricsLabel: "Conversión Móvil",
+      },
+      {
+        id: "ai-workflow",
+        title: "Orquestador de Agentes Autónomos",
+        client: "CognitiveFlow AI",
+        industry: "Inteligencia Artificial",
+        summary: "Lienzo visual de nodos para orquestar flujos de trabajo LLM y coordinación multi-agente empresarial.",
+        image: "/images/CognitiveFlow.webp",
+        tags: ["AI Agents", "React Flow", "Full-Stack"],
+        metrics: "10x",
+        metricsLabel: "Aceleración de Flujos",
+      },
+    ],
+  },
+  pricing: {
+    eyebrow: "06 — Precios Transparentes",
+    title: "Inversión Clara en",
+    titleHighlight: "Ingeniería",
+    intro: "Precios base transparentes. Para presupuestos a medida, utiliza nuestro estimador interactivo.",
+    estimatorNote: "¿Necesitas un desarrollo a medida o migración compleja? Utiliza nuestra calculadora interactiva.",
+    tiers: [
+      {
+        id: "showcase",
+        name: "Web de Marca y Showcase",
+        highlight: false,
+        priceStarting: "Desde 1,800€",
+        period: "pago único",
+        summary: "Web corporativa de alto rendimiento con tipografía editorial, arquitectura trilingüe y física interactiva.",
+        deliverables: [
+          "Tipografía editorial y diseño a medida",
+          "Configuración estática trilingüe (EN / ES / ZH)",
+          "100/100 Lighthouse en SEO y Rendimiento",
+          "Microinteracciones interactivas de física",
+          "Despliegue estático sin mantenimiento en GitHub Pages",
+        ],
+        timeline: "1-2 Semanas",
+        cta: "Reservar Llamada de Diagnóstico",
+      },
+      {
+        id: "ecommerce",
+        name: "E-Commerce de Alta Conversión",
+        highlight: true,
+        priceStarting: "Desde 3,800€",
+        period: "pago único",
+        summary: "Tienda headless optimizada para velocidad y conversión global con pasarela Stripe multidivisa.",
+        deliverables: [
+          "Storefront headless con UX ultrarrápida",
+          "Stripe y pasarela multidivisa internacional",
+          "Sincronización de catálogo e inventario",
+          "Cumplimiento RGPD y privacidad legal",
+          "Drawer de checkout optimizado para conversión",
+        ],
+        timeline: "3-4 Semanas",
+        cta: "Empezar Proyecto",
+      },
+      {
+        id: "webapp",
+        name: "Web App a Medida y SaaS",
+        highlight: false,
+        priceStarting: "Desde 6,500€",
+        period: "por hitos",
+        summary: "Producto digital full-stack integral con estado complejo, autenticación y APIs dedicadas.",
+        deliverables: [
+          "Arquitectura escalable y diseño de base de datos",
+          "Autenticación por roles y panel de administración",
+          "Integración de agentes IA y automatizaciones",
+          "Feeds en tiempo real y APIs REST/GraphQL",
+          "SLA dedicado y mantenimiento evolutivo",
+        ],
+        timeline: "4-8 Semanas",
+        cta: "Solicitar Revisión Técnica",
+      },
+    ],
   },
   estimator: {
     eyebrow: "Calculadora de Proyectos & Alcance",
@@ -1472,6 +1776,11 @@ const zhCN: SiteContent = {
   ctaLabel: "获取项目报价",
   hero: {
     eyebrow: "开放新项目预订 · 扎根西班牙马德里的技术开发团队",
+    editorialTitle: {
+      prefix: "为追求",
+      serif: "卓越",
+      suffix: "的品牌，构筑极致可靠的数字工程。",
+    },
     title: "为企业定制打造带来真实商业回报的定制网站、移动 App",
     titleHighlight: "与出海独立站。",
     subtitle:
@@ -1580,6 +1889,121 @@ const zhCN: SiteContent = {
         },
       ],
     },
+    physics: {
+      badge: "商业价值实验室",
+      instruction: "鼠标拖拽或抛掷，探索交付价值指标",
+      items: [
+        { id: "uptime", label: "99.9% 高可用", type: "pill" },
+        { id: "seo", label: "SEO 满分", type: "pill" },
+        { id: "zero-bug", label: "零缺陷交付", type: "pill" },
+        { id: "fast-ux", label: "极致性能 (<50ms)", type: "pill" },
+        { id: "scale", label: "全球化架构", type: "pill" },
+        { id: "conversion", label: "高转化率", type: "pill" },
+        { id: "code", label: "{ }", type: "badge" },
+        { id: "rocket", label: "🚀", type: "badge" },
+      ],
+    },
+  },
+  showcase: {
+    eyebrow: "05 — 代表作品",
+    title: "工程实践与标杆",
+    titleHighlight: "案例",
+    intro: "以严谨工程纪律交付的高性能数字化系统。",
+    items: [
+      {
+        id: "fintech",
+        title: "企业级交易与风控引擎",
+        client: "QuantEdge Global",
+        industry: "金融科技与 SaaS",
+        summary: "基于 Next.js 构建的亚毫秒级订单撮合路由与实时风控智能仪表盘。",
+        image: "/images/FinTech.webp",
+        tags: ["Next.js", "TypeScript", "WebSocket"],
+        metrics: "+18.4%",
+        metricsLabel: "执行效率提升",
+      },
+      {
+        id: "luxury-store",
+        title: "定制化 Headless 独立站",
+        client: "Maison Éthique",
+        industry: "电子商务",
+        summary: "杂志级质感的奢品购物体验，瞬时页面响应，Stripe 多币种结算，Lighthouse SEO 满分。",
+        image: "/images/Store.webp",
+        tags: ["Headless", "Stripe", "Next.js"],
+        metrics: "+140%",
+        metricsLabel: "移动端转化率",
+      },
+      {
+        id: "ai-workflow",
+        title: "自主 AI Agent 编排系统",
+        client: "CognitiveFlow AI",
+        industry: "人工智能",
+        summary: "基于 React Flow 节点画布的企业级 LLM 工作流与多智能体协作管理平台。",
+        image: "/images/CognitiveFlow.webp",
+        tags: ["AI Agents", "React Flow", "Full-Stack"],
+        metrics: "10x",
+        metricsLabel: "工作流提速",
+      },
+    ],
+  },
+  pricing: {
+    eyebrow: "06 — 透明阶梯定价",
+    title: "清晰透明的",
+    titleHighlight: "工程投入",
+    intro: "公开透明的起步基准。如需自定义规格，请使用下方的交互式预算计算器。",
+    estimatorNote: "需要企业级定制系统、复杂数据迁移或专属里程碑？请使用下方交互估算器细化需求。",
+    tiers: [
+      {
+        id: "showcase",
+        name: "品牌展示与标杆官网",
+        highlight: false,
+        priceStarting: "Desde 1,800€",
+        period: "一次性交付",
+        summary: "高性能品牌官方网站，融合现代杂志级排版、三语静态架构与交互式物理微动效。",
+        deliverables: [
+          "杂志级视觉排版与定制工程设计",
+          "中/西/英三语静态极速架构",
+          "Lighthouse 100/100 满分性能与 SEO",
+          "物理引擎交互式价值徽章组件",
+          "GitHub Pages 零维护成本自动化托管",
+        ],
+        timeline: "1-2 周",
+        cta: "预约技术沟通",
+      },
+      {
+        id: "ecommerce",
+        name: "高转化跨境独立站",
+        highlight: true,
+        priceStarting: "Desde 3,800€",
+        period: "一次性交付",
+        summary: "专为全球转化与极致速度打造的 Headless 电商独立站，集成 Stripe 全球多币种结算。",
+        deliverables: [
+          "超高流畅度 Headless 现代化前端",
+          "Stripe 与全球主流多币种支付结算",
+          "商品数据与库存自动化同步",
+          "欧盟 GDPR 隐私合规与法律合规配置",
+          "转化率专项优化的滑出式结账体验",
+        ],
+        timeline: "3-4 周",
+        cta: "启动项目",
+      },
+      {
+        id: "webapp",
+        name: "企业定制系统与 SaaS",
+        highlight: false,
+        priceStarting: "Desde 6,500€",
+        period: "里程碑交付",
+        summary: "全流程端到端数字化产品开发，具备复杂状态管理、权限安全体系与定制高并发 API。",
+        deliverables: [
+          "高扩展性系统架构与数据库建模",
+          "基于 RBAC 的权限系统与管理中台",
+          "企业级 AI Agent 与自动化工作流集成",
+          "实时数据流与专用 REST/GraphQL 接口",
+          "专属 SLA 保障与持续演进技术支持",
+        ],
+        timeline: "4-8 周",
+        cta: "预约架构方案评审",
+      },
+    ],
   },
   estimator: {
     eyebrow: "项目范围与预算评估器",
