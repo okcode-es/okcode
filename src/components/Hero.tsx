@@ -1,6 +1,6 @@
 import type { SiteContent } from "@/content/site-content";
 import { IconArrow } from "./Icons";
-import HeroExplorer from "./HeroExplorer";
+import PhysicsPlayground from "./PhysicsPlayground";
 
 export default function Hero({ content }: { content: SiteContent }) {
   const { hero } = content;
@@ -15,9 +15,19 @@ export default function Hero({ content }: { content: SiteContent }) {
           </div>
 
           <h1 className="hero__headline">
-            {hero.title}{" "}
-            {hero.titleHighlight && (
-              <span className="text-gradient">{hero.titleHighlight}</span>
+            {hero.editorialTitle ? (
+              <>
+                {hero.editorialTitle.prefix}{" "}
+                <span className="font-editorial">{hero.editorialTitle.serif}</span>{" "}
+                {hero.editorialTitle.suffix}
+              </>
+            ) : (
+              <>
+                {hero.title}{" "}
+                {hero.titleHighlight && (
+                  <span className="text-gradient">{hero.titleHighlight}</span>
+                )}
+              </>
             )}
           </h1>
 
@@ -53,7 +63,7 @@ export default function Hero({ content }: { content: SiteContent }) {
               {hero.primaryCta}
               <IconArrow className="arrow" width={16} height={16} />
             </a>
-            <a className="btn btn--ghost" href="#projects">
+            <a className="btn btn--ghost" href="#pricing">
               {hero.secondaryCta}
             </a>
           </div>
@@ -62,7 +72,7 @@ export default function Hero({ content }: { content: SiteContent }) {
         </div>
 
         <div className="hero__interactive-wrap">
-          <HeroExplorer interactive={hero.interactive} />
+          <PhysicsPlayground data={hero.physics} heroImage="/images/hero.webp" />
         </div>
       </div>
     </section>
