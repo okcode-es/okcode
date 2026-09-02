@@ -59,14 +59,14 @@
   * 双 CTA：`预约 30 分钟需求探索会 (Discovery Call)`（锚点/弹窗）+ `交互式预算估算`（锚点跳转）。
 * **右侧互动装置**：
   * 搭载上述 `PhysicsPlayground`；
-  * 衬托概念硬核工件背景图 `/images/hero.jpg`。
+  * 衬托概念硬核工件背景图 `/images/hero.webp`。
 
 ### 4.3 沉浸式横向案例画廊 (Horizontal Showcase Gallery)
 * **展示载体**：原生流畅 CSS Scroll-Snap 横向画廊，支持鼠标滚轮与滑动手势。
 * **3 个已生成实景案例展示**：
-  1. **Enterprise FinTech SaaS**（`/images/FinTech.jpg`）— 量化金融交易与风控平台，毫秒级响应，TypeScript + Next.js 全栈。
-  2. **Maison & Co. Luxury Store**（`/images/Store.jpg`）— 欧洲高奢定制电商独立站，Stripe 全球收单，100 分 SEO 杂志排版。
-  3. **CognitiveFlow AI Workflow**（`/images/CognitiveFlow.jpg`）— 企业级 AI Agent 工作流中台，自动化编排调度。
+  1. **Enterprise FinTech SaaS**（`/images/FinTech.webp`）— 量化金融交易与风控平台，毫秒级响应，TypeScript + Next.js 全栈。
+  2. **Maison & Co. Luxury Store**（`/images/Store.webp`）— 欧洲高奢定制电商独立站，Stripe 全球收单，100 分 SEO 杂志排版。
+  3. **CognitiveFlow AI Workflow**（`/images/CognitiveFlow.webp`）— 企业级 AI Agent 工作流中台，自动化编排调度。
 * **卡片细节**：高精实拍样机图、浮动商业收益微标（如 `+180% 转化`、`12ms 延时`）、技术栈药丸标签。
 
 ### 4.4 透明阶梯定价与交互估算器联动 (Pricing & Estimator)
@@ -102,4 +102,4 @@
    * 桌面端鼠标拖拽、甩飞顺畅；
    * 移动端触控空白区域时上下滑动页面无卡顿；
    * 页面滚出视口后物理引擎自动暂停。
-4. **图片资源完整性**：`/images/hero.jpg`、`/images/FinTech.jpg`、`/images/Store.jpg`、`/images/CognitiveFlow.jpg` 均能正常加载且自适应清晰。
+4. **图片资源完整性**：`/images/hero.webp`、`/images/FinTech.webp`、`/images/Store.webp`、`/images/CognitiveFlow.webp` 均能正常加载且自适应清晰。
