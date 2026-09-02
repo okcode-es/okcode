@@ -49,7 +49,6 @@ export default function SiteFooter({ content, current }: Props) {
 
         <div className="site-footer__bottom">
           <span>{content.footer.rights}</span>
-          <span>{content.footer.builtNote}</span>
         </div>
       </div>
     </footer>

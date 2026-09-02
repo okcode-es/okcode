@@ -10,7 +10,7 @@ export const defaultLocale: Locale = "en";
 export const localeLabels: Record<Locale, { native: string; english: string; flag: string }> = {
   en: { native: "English", english: "English", flag: "EN" },
   es: { native: "Español", english: "Spanish", flag: "ES" },
-  "zh-CN": { native: "简体中文", english: "Chinese", flag: "中文" },
+  "zh-CN": { native: "中文", english: "Chinese", flag: "ZH" },
 };
 
 // Path prefix per locale. English is served at the site root ("/").

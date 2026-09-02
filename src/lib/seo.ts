@@ -64,11 +64,13 @@ export function buildMetadata(locale: Locale): Metadata {
         },
       ],
     },
+    category: "technology",
     twitter: {
       card: "summary_large_image",
       title: c.seo.ogTitle,
       description: c.seo.ogDescription,
-      creator: "@okcode_",
+      creator: "@okcode_es",
+      site: "@okcode_es",
       images: ["/og.svg"],
     },
   };

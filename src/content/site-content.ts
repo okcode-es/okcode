@@ -54,6 +54,7 @@ export interface ContactInfo {
   email: string;
   phone: string;
   whatsapp: string;
+  telegram?: string;
   address: string;
   socials: { label: string; href: string }[];
 }
@@ -117,6 +118,51 @@ export interface HeroData {
   interactive: HeroInteractiveData;
 }
 
+export interface EstimatorProjectType {
+  id: string;
+  title: string;
+  badge: string;
+  description: string;
+  baseTimeline: string;
+  stackSuggested: string;
+}
+
+export interface EstimatorFeatureOption {
+  id: string;
+  name: string;
+  desc: string;
+  category: "core" | "integration" | "scale";
+}
+
+export interface EstimatorTimelineOption {
+  id: string;
+  label: string;
+  badge: string;
+}
+
+export interface EstimatorData {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  projectTypes: EstimatorProjectType[];
+  featureOptions: EstimatorFeatureOption[];
+  timelines: EstimatorTimelineOption[];
+  ui: {
+    step1Title: string;
+    step2Title: string;
+    step3Title: string;
+    summaryTitle: string;
+    summaryScope: string;
+    summaryTimeline: string;
+    summaryStack: string;
+    whatsappButton: string;
+    emailButton: string;
+    copyButton: string;
+    copiedNotice: string;
+    whatsappMessagePrefix: string;
+  };
+}
+
 export interface UiCopy {
   skipToContent: string;
   header: {
@@ -165,6 +211,7 @@ export interface SiteContent {
   nav: NavItem[];
   ctaLabel: string; // header / shared primary call-to-action
   hero: HeroData;
+  estimator: EstimatorData;
   studio: {
     eyebrow: string;
     title: string;
@@ -224,14 +271,14 @@ export interface SiteContent {
 // Shared sample contact details
 // ---------------------------------------------------------------------------
 const sampleContact: ContactInfo = {
-  email: "hello@okcode.es",
-  phone: "+34 600 000 000",
-  whatsapp: "+34600000000",
+  email: "info@okcode.es",
+  phone: "+34 684 25 21 30",
+  whatsapp: "34684252130",
+  telegram: "https://t.me/+34684252130",
   address: "Madrid, Spain",
   socials: [
-    { label: "GitHub", href: "https://github.com/okcode-es" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/okcode-es" },
-    { label: "X / Twitter", href: "https://twitter.com/okcode_" },
+    { label: "WhatsApp", href: "https://wa.me/34684252130" },
+    { label: "Telegram", href: "https://t.me/+34684252130" },
   ],
 };
 
@@ -391,6 +438,73 @@ const en: SiteContent = {
           ctaText: "I want to build Custom Software",
         },
       ],
+    },
+  },
+  estimator: {
+    eyebrow: "Interactive Project Estimator",
+    title: "Calculate your project scope & estimated turnaround.",
+    intro:
+      "Select your project requirements below to see an instant architectural overview and share it directly with our senior engineers via WhatsApp or email.",
+    projectTypes: [
+      {
+        id: "mvp",
+        title: "Startup MVP Launchpad",
+        badge: "Fast to Market",
+        description: "Full working web or mobile product to validate your startup idea and pitch investors.",
+        baseTimeline: "3 – 4 weeks",
+        stackSuggested: "Next.js 15 · Tailwind · Supabase / PostgreSQL",
+      },
+      {
+        id: "web",
+        title: "High-Converting Custom Web",
+        badge: "Top 1% Speed & SEO",
+        description: "Marketing website or customer portal designed to convert visitors and dominate search results.",
+        baseTimeline: "2 – 3 weeks",
+        stackSuggested: "Next.js · React 19 · TypeScript · Headless CMS",
+      },
+      {
+        id: "ecommerce",
+        title: "Scalable E-Commerce Store",
+        badge: "Global Sales Ready",
+        description: "Online store with multi-currency checkout, inventory sync, and conversion-optimized flow.",
+        baseTimeline: "3 – 5 weeks",
+        stackSuggested: "Shopify Headless · WooCommerce · Stripe / PayPal",
+      },
+      {
+        id: "app",
+        title: "Cross-Platform Mobile App",
+        badge: "iOS & Android",
+        description: "Native-feel mobile application with single codebase, push notifications, and store publishing.",
+        baseTimeline: "5 – 8 weeks",
+        stackSuggested: "React Native · Expo · Node.js API · Cloud Sync",
+      },
+    ],
+    featureOptions: [
+      { id: "auth", name: "User Auth & Roles", desc: "Sign up, social login, permissions & profile dashboard", category: "core" },
+      { id: "payments", name: "Payment Gateway", desc: "Stripe, Bizum, Apple Pay, PayPal or subscription billing", category: "core" },
+      { id: "admin", name: "Custom Admin Panel", desc: "Manage content, orders, users and real-time business metrics", category: "core" },
+      { id: "ai", name: "AI / Smart Automations", desc: "OpenAI/Claude integration, auto-reply, document processing", category: "integration" },
+      { id: "i18n", name: "Multi-Language & SEO", desc: "English, Spanish, Chinese with locale routing and schema.org", category: "integration" },
+      { id: "api", name: "Third-Party API & ERP", desc: "Connect CRM, logistics, invoicing or existing corporate database", category: "integration" },
+    ],
+    timelines: [
+      { id: "express", label: "Express Sprint (< 1 month)", badge: "Priority Delivery" },
+      { id: "standard", label: "Standard (1 – 2 months)", badge: "Balanced Roadmap" },
+      { id: "flexible", label: "Flexible / Long-term Squad", badge: "Iterative Sprints" },
+    ],
+    ui: {
+      step1Title: "1. Choose your project type",
+      step2Title: "2. Key capabilities & integrations",
+      step3Title: "3. Target delivery timeline",
+      summaryTitle: "Your Project Blueprint",
+      summaryScope: "Selected Scope",
+      summaryTimeline: "Estimated Timeline",
+      summaryStack: "Recommended Tech Stack",
+      whatsappButton: "Send Blueprint via WhatsApp",
+      emailButton: "Send via Email",
+      copyButton: "Copy Summary",
+      copiedNotice: "Blueprint copied to clipboard!",
+      whatsappMessagePrefix: "Hello OKCODE, I would like to get a quote for a project:",
     },
   },
   studio: {
@@ -641,7 +755,7 @@ const en: SiteContent = {
       {
         question: "How much does a custom website, online store, or mobile app cost?",
         answer:
-          "Project costs depend on scope, complexity, and specific requirements. Landing pages and marketing websites typically start around €1,500–€3,500, comprehensive e-commerce stores range from €3,000–€7,000, and custom mobile apps or software platforms start from €5,000. We provide fixed, transparent estimates with no unexpected overages.",
+          "To support early-stage businesses and expand our client portfolio in Madrid and across Europe, we offer highly competitive introductory pricing with 100% transparent, fixed-price contracts: High-converting landing pages and corporate websites start from €490–€1,200; e-commerce storefronts (Shopify / WooCommerce) range from €890–€1,950; and custom iOS/Android mobile apps or MVP software platforms start from €1,500–€3,500. We provide flexible milestone payments and full code ownership.",
       },
       {
         question: "How long does it take to design, develop and launch a project?",
@@ -714,24 +828,27 @@ const en: SiteContent = {
     about:
       "OKCODE is a Spain-based development studio crafting custom websites, mobile apps, e-commerce stores, and software for Spanish, English, and Chinese speaking businesses.",
     rights: "© " + new Date().getFullYear() + " OKCODE. All rights reserved.",
-    builtNote: "Engineered for speed, accessibility & SEO · Static Next.js",
+    builtNote: "",
   },
   seo: {
-    title: "OKCODE — Custom Web, Mobile App & Software Development Studio (Spain)",
+    title: "OKCODE — Custom Software, Mobile App & Web Development Studio (Spain & Europe)",
     description:
-      "Spain-based development studio building custom websites, iOS/Android mobile apps, e-commerce storefronts (Shopify/WooCommerce), and bespoke business software. Get a free quote.",
+      "Premier software engineering studio in Spain. We design & develop high-converting custom web applications, iOS/Android mobile apps, Shopify/Headless e-commerce stores, and scalable business software for startups and SMEs. 100% code ownership.",
     keywords: [
-      "custom software development",
-      "web development studio spain",
-      "mobile app development agency",
-      "react native app developers",
-      "shopify ecommerce development",
-      "next.js web development madrid",
-      "custom business applications",
+      "custom software development studio spain",
+      "mobile app development company madrid",
+      "custom web application development",
+      "next.js react development agency",
+      "react native app developers europe",
+      "shopify headless ecommerce development",
+      "startup mvp development studio",
+      "b2b software engineering company",
+      "hire senior developers spain",
+      "multilingual software development agency",
     ],
-    ogTitle: "OKCODE — Custom Web, Mobile App & Software Development Studio",
+    ogTitle: "OKCODE — High-Performance Software, Mobile Apps & Web Studio (Spain)",
     ogDescription:
-      "We build high-performance websites, iOS/Android apps, e-commerce stores and custom software for modern businesses.",
+      "Turn your vision into production-ready software in 3-4 weeks. 100% source code ownership, fixed transparent pricing, and 30-day post-launch warranty.",
   },
 };
 
@@ -891,6 +1008,73 @@ const es: SiteContent = {
           ctaText: "Quiero crear Software a Medida",
         },
       ],
+    },
+  },
+  estimator: {
+    eyebrow: "Calculadora de Proyectos & Alcance",
+    title: "Estima el alcance y plazo de tu proyecto en 30 segundos.",
+    intro:
+      "Selecciona los requerimientos de tu idea a continuación para obtener una estimación arquitectónica inmediata y enviárnosla directamente por WhatsApp o email.",
+    projectTypes: [
+      {
+        id: "mvp",
+        title: "MVP Express para Startups",
+        badge: "Validación Rápida",
+        description: "Producto funcional en web o móvil listo para validar con clientes reales y presentar a inversores.",
+        baseTimeline: "3 – 4 semanas",
+        stackSuggested: "Next.js 15 · Tailwind · Supabase / PostgreSQL",
+      },
+      {
+        id: "web",
+        title: "Web Corporativa & Plataforma a Medida",
+        badge: "Top 1% Velocidad & SEO",
+        description: "Página web de alta conversión o portal de clientes diseñado para captar leads y posicionar en Google.",
+        baseTimeline: "2 – 3 semanas",
+        stackSuggested: "Next.js · React 19 · TypeScript · CMS Headless",
+      },
+      {
+        id: "ecommerce",
+        title: "Tienda Online / E-Commerce Escalable",
+        badge: "Ventas Internacionales",
+        description: "Comercio electrónico con pasarelas seguras (Stripe, Bizum), checkout optimizado y sincronización de stock.",
+        baseTimeline: "3 – 5 semanas",
+        stackSuggested: "Shopify Headless · WooCommerce · Stripe / Bizum",
+      },
+      {
+        id: "app",
+        title: "App Móvil Multiplataforma (iOS & Android)",
+        badge: "iOS + Android",
+        description: "Aplicación móvil fluida con base de código unificada, notificaciones push y publicación en App Store y Google Play.",
+        baseTimeline: "5 – 8 semanas",
+        stackSuggested: "React Native · Expo · API Node.js · Cloud Sync",
+      },
+    ],
+    featureOptions: [
+      { id: "auth", name: "Usuarios y Autenticación", desc: "Registro, login con Google/Apple, roles y perfil de usuario", category: "core" },
+      { id: "payments", name: "Pasarela de Pago Segura", desc: "Integración de Stripe, Bizum, suscripciones o cobros recurrentes", category: "core" },
+      { id: "admin", name: "Panel de Gestión / Backoffice", desc: "Administración de pedidos, contenidos, usuarios y métricas", category: "core" },
+      { id: "ai", name: "IA y Automatizaciones", desc: "Integración de modelos OpenAI/Claude, chatbots o procesamiento de datos", category: "integration" },
+      { id: "i18n", name: "Multiidioma y SEO Internacional", desc: "Español, Inglés y Chino con enrutamiento limpio y microdatos", category: "integration" },
+      { id: "api", name: "Integración con API / ERP", desc: "Conexión con tu CRM, facturación, stock o base de datos externa", category: "integration" },
+    ],
+    timelines: [
+      { id: "express", label: "Express Sprint (< 1 mes)", badge: "Entrega Prioritaria" },
+      { id: "standard", label: "Estándar (1 – 2 meses)", badge: "Planificación Óptima" },
+      { id: "flexible", label: "Flexible / Equipo Dedicado", badge: "Sprints Continuos" },
+    ],
+    ui: {
+      step1Title: "1. Selecciona el tipo de proyecto",
+      step2Title: "2. Funcionalidades e integraciones clave",
+      step3Title: "3. Plazo objetivo de lanzamiento",
+      summaryTitle: "Resumen de tu Proyecto",
+      summaryScope: "Alcance Seleccionado",
+      summaryTimeline: "Plazo Estimado",
+      summaryStack: "Stack Tecnológico Recomendado",
+      whatsappButton: "Enviar Resumen por WhatsApp",
+      emailButton: "Enviar por Email",
+      copyButton: "Copiar Resumen",
+      copiedNotice: "¡Resumen copiado al portapapeles!",
+      whatsappMessagePrefix: "Hola OKCODE, me gustaría solicitar presupuesto para el siguiente proyecto:",
     },
   },
   studio: {
@@ -1141,7 +1325,7 @@ const es: SiteContent = {
       {
         question: "¿Cuánto cuesta crear una página web, tienda online o aplicación móvil a medida?",
         answer:
-          "El precio varía según el alcance y las funcionalidades requeridas. Páginas web corporativas y landing pages profesionales suelen oscilar entre 1.500 € y 3.500 €. Tiendas online completas en Shopify o WooCommerce suelen situarse entre 3.000 € y 7.000 €. Aplicaciones móviles (iOS/Android) o desarrollos de software a medida parten generalmente desde 5.000 €. Siempre proporcionamos un presupuesto cerrado y detallado sin sorpresas.",
+          "Para apoyar a pymes, profesionales y startups en Madrid y consolidar nuestra cartera inicial de clientes, ofrecemos tarifas de lanzamiento altamente competitivas con presupuesto cerrado y 100% transparente: Páginas web corporativas y landing pages de alta conversión desde 490 € a 1.200 €; tiendas online completas en Shopify o WooCommerce desde 890 € a 1.950 €; y aplicaciones móviles (iOS/Android) o desarrollos de software/MVP a medida desde 1.500 € a 3.500 €. Ofrecemos facilidades de pago por hitos, sin sorpresas y con código 100% propio.",
       },
       {
         question: "¿Cuánto tiempo se tarda en diseñar, desarrollar y lanzar el proyecto?",
@@ -1215,26 +1399,27 @@ const es: SiteContent = {
     about:
       "OKCODE es un estudio de desarrollo de software con base en España que crea páginas web a medida, aplicaciones móviles, tiendas online y software empresarial para equipos que hablan español, inglés y chino.",
     rights: "© " + new Date().getFullYear() + " OKCODE. Todos los derechos reservados.",
-    builtNote: "Optimizado para velocidad, accesibilidad y SEO · Next.js estático",
+    builtNote: "",
   },
   seo: {
-    title: "OKCODE — Desarrollo Web a Medida, Apps Móviles y Tiendas Online en España",
+    title: "OKCODE — Empresa de Desarrollo de Software, Apps Móviles y Páginas Web a Medida (España)",
     description:
-      "Estudio de desarrollo en España especializado en creación de páginas web a medida, aplicaciones móviles iOS/Android, tiendas online Shopify/WooCommerce y software empresarial. Presupuesto sin compromiso.",
+      "Estudio de ingeniería y desarrollo de software en España. Creamos aplicaciones móviles para iOS y Android, páginas web de alto rendimiento en Next.js, tiendas online Shopify y plataformas a medida para startups y empresas. 100% código propio.",
     keywords: [
-      "desarrollo web a medida",
-      "crear pagina web profesional",
-      "desarrollo aplicaciones moviles",
-      "empresa desarrollo apps madrid",
-      "crear tienda online shopify",
-      "desarrollo ecommerce españa",
-      "software a medida empresas",
-      "programacion react nextjs",
-      "estudio desarrollo software",
+      "empresa desarrollo software españa",
+      "desarrollo aplicaciones moviles madrid",
+      "crear aplicacion movil ios android",
+      "diseño y desarrollo web a medida nextjs",
+      "estudio programacion y software a medida",
+      "crear tienda online shopify ecommerce",
+      "desarrollo mvp startups españa",
+      "programadores react native madrid",
+      "presupuesto desarrollo software a medida",
+      "agencia desarrollo digital españa",
     ],
-    ogTitle: "OKCODE — Desarrollo Web, Apps Móviles y Tiendas Online en España",
+    ogTitle: "OKCODE — Software a Medida, Aplicaciones Móviles y Desarrollo Web en España",
     ogDescription:
-      "Creamos páginas web de alto rendimiento, aplicaciones móviles (iOS/Android), tiendas online y software a medida para empresas y startups.",
+      "Lanza tu producto digital en 3-4 semanas con código 100% de tu propiedad, presupuesto cerrado y 30 días de garantía post-lanzamiento.",
   },
 };
 
@@ -1394,6 +1579,72 @@ const zhCN: SiteContent = {
           ctaText: "咨询定制系统开发",
         },
       ],
+    },
+  },
+  estimator: {
+    eyebrow: "项目范围与预算评估器",
+    title: "30秒快速评估您的数字化项目与交付周期。",
+    intro: "在下方选择您的项目需求，实时获取架构配置与交付建议，并可一键通过 WhatsApp 或邮件直接与资深工程师对接。",
+    projectTypes: [
+      {
+        id: "mvp",
+        title: "初创企业 MVP 敏捷出海",
+        badge: "快速上线验证",
+        description: "3-4周内交付高品质全栈 Web 或移动产品，快速验证商业模式并向投资人演示。",
+        baseTimeline: "3 – 4 周",
+        stackSuggested: "Next.js 15 · Tailwind · Supabase / PostgreSQL",
+      },
+      {
+        id: "web",
+        title: "定制高转化品牌官网 & 平台",
+        badge: "顶尖性能与 Google SEO",
+        description: "专为海外获客打造的高性能官网、客户门户与业务后台，极速打开并在搜索引擎名列前茅。",
+        baseTimeline: "2 – 3 周",
+        stackSuggested: "Next.js · React 19 · TypeScript · Headless CMS",
+      },
+      {
+        id: "ecommerce",
+        title: "跨境电商独立站 (Shopify/Woo)",
+        badge: "全球支付与多币种",
+        description: "集成 Stripe、PayPal、Apple Pay 与微信支付，高转化结账流程与海外库存同步。",
+        baseTimeline: "3 – 5 周",
+        stackSuggested: "Shopify Headless · WooCommerce · Stripe / 微信支付",
+      },
+      {
+        id: "app",
+        title: "跨平台移动 App (iOS & Android)",
+        badge: "双端同构交付",
+        description: "一套高质量代码同时发布至苹果 App Store 与 Google Play，流畅原生体验与实时通知。",
+        baseTimeline: "5 – 8 周",
+        stackSuggested: "React Native · Expo · Node.js API · 云端同步",
+      },
+    ],
+    featureOptions: [
+      { id: "auth", name: "用户体系与权限", desc: "支持 Google/微信/Apple 快捷登录、多角色权限与个人中心", category: "core" },
+      { id: "payments", name: "全球安全支付网关", desc: "集成 Stripe、Bizum、PayPal、订阅制自动扣费与发票系统", category: "core" },
+      { id: "admin", name: "定制管理后台 / ERP", desc: "高效管理订单、会员、内容与实时多维度业务数据看板", category: "core" },
+      { id: "ai", name: "AI 智能与业务自动化", desc: "接入 OpenAI/Claude 模型，实现智能客服与工作流自动处理", category: "integration" },
+      { id: "i18n", name: "三语国际化与海外 SEO", desc: "中/西/英三语独立静态路由与 Schema.org 结构化数据优化", category: "integration" },
+      { id: "api", name: "第三方 API / 现有系统打通", desc: "无缝对接外部 CRM、海外物流跟踪或企业现有数据库", category: "integration" },
+    ],
+    timelines: [
+      { id: "express", label: "加急敏捷冲刺 (< 1个月)", badge: "优先交付" },
+      { id: "standard", label: "标准交付周期 (1 – 2个月)", badge: "稳健规划" },
+      { id: "flexible", label: "灵活迭代 / 长期技术伙伴", badge: "持续敏捷 Sprints" },
+    ],
+    ui: {
+      step1Title: "1. 选择项目类型",
+      step2Title: "2. 核心功能与第三方集成",
+      step3Title: "3. 目标交付周期",
+      summaryTitle: "您的项目规划概要",
+      summaryScope: "所选需求范围",
+      summaryTimeline: "预计交付周期",
+      summaryStack: "推荐技术栈",
+      whatsappButton: "通过 WhatsApp 快速发送需求",
+      emailButton: "通过邮件发送",
+      copyButton: "复制需求摘要",
+      copiedNotice: "项目概要已复制到剪贴板！",
+      whatsappMessagePrefix: "您好 OKCODE，我想咨询以下项目的开发方案与报价：",
     },
   },
   studio: {
@@ -1637,7 +1888,7 @@ const zhCN: SiteContent = {
       {
         question: "开发一个定制网站、独立站或移动 App 大致需要多少预算？",
         answer:
-          "费用取决于项目的具体功能、复杂度与交付周期。标准的企业展示官网或高转化落地页通常在 1,500 € – 3,500 € 之间；具备完整支付与物流功能的 Shopify/WooCommerce 独立站通常在 3,000 € – 7,000 € 之间；定制开发的 iOS/Android 移动 App 或企业业务系统通常从 5,000 € 起。我们在立项前会提供详尽透明的固定报价单，绝无任何隐藏加价。",
+          "为了开拓马德里及欧洲初创市场并建立早期标杆客户案例，我们目前提供极具诚意的高性价比初期合作特惠价（同等享受资深工程师直连交付与 100% 源码交付）：企业展示官网与高转化营销页 490 € – 1,200 € 起；全功能跨境电商独立站（Shopify / WooCommerce）890 € – 1,950 € 起；定制开发的 iOS/Android 移动 App 或初创 MVP 业务系统 1,500 € – 3,500 € 起。支持按里程碑分期付款，签订一口价透明合同，绝无任何隐藏加价。",
       },
       {
         question: "从开始设计到最终上线通常需要多长时间？",
@@ -1706,26 +1957,27 @@ const zhCN: SiteContent = {
     about:
       "OKCODE 是一支扎根西班牙的专业数字化开发工作室，为讲中文、西班牙语与英语的企业打造高质量 Web 网站、移动 App、跨境电商独立站与定制业务系统。",
     rights: "© " + new Date().getFullYear() + " OKCODE. 保留所有权利。",
-    builtNote: "极速性能、无障碍与 Google SEO 深度优化 · 静态 Next.js",
+    builtNote: "",
   },
   seo: {
-    title: "OKCODE — 软件定制开发、出海电商独立站与移动 App 开发工作室（西班牙）",
+    title: "OKCODE — 西班牙软件定制开发、移动App开发与出海电商独立站工作室",
     description:
-      "扎根西班牙的专业软件与数字化开发工作室，为企业量身打造高性能定制网站、iOS/Android 移动应用、跨境电商独立站（Shopify/WooCommerce）与业务管理系统。欢迎咨询报价。",
+      "扎根西班牙马德里的资深全栈工程团队。专注为全球讲中文、西语与英语的企业量身定制高性能 Web 应用、iOS/Android 跨平台 App（React Native）、Shopify 跨境独立站及数字化系统。100% 源码交付。",
     keywords: [
       "西班牙软件开发公司",
-      "定制网站开发",
-      "出海独立站搭建",
-      "移动应用开发公司",
-      "React Native 开发",
-      "Shopify 电商开发",
-      "西班牙华人技术团队",
-      "企业管理软件定制",
-      "Next.js 网站制作",
+      "马德里华人软件开发团队",
+      "欧洲定制网站与Web应用",
+      "海外出海独立站搭建Shopify",
+      "React Native 跨平台App开发",
+      "西班牙移动应用开发公司",
+      "欧洲企业业务管理系统定制",
+      "初创企业MVP敏捷出海开发",
+      "Next.js 独立站开发制作",
+      "中西英三语软件外包团队",
     ],
-    ogTitle: "OKCODE — 西班牙专业软件开发、出海独立站与移动 App 定制工作室",
+    ogTitle: "OKCODE — 扎根西班牙的专业软件开发、移动 App 与跨境独立站工作室",
     ogDescription:
-      "为全球讲中文、西班牙语与英语的企业打造高质量 Web 网站、移动 App、跨境电商与定制业务系统。",
+      "3-4周内将您的产品构想转化为高品质上线产品。100% 源码与知识产权交付，固定透明报价与30天售后质保。",
   },
 };
 

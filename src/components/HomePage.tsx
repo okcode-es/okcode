@@ -3,6 +3,7 @@ import type { Locale } from "@/lib/i18n";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import Hero from "./Hero";
+import ProjectEstimator from "./ProjectEstimator";
 import SectionHeading from "./SectionHeading";
 import ServiceCard from "./ServiceCard";
 import ProjectCard from "./ProjectCard";
@@ -11,6 +12,7 @@ import ProcessSteps from "./ProcessSteps";
 import FaqSection from "./FaqSection";
 import TestimonialCard from "./TestimonialCard";
 import ContactPanel from "./ContactPanel";
+import FloatingQuickContact from "./FloatingQuickContact";
 import Reveal from "./Reveal";
 import JsonLd from "./JsonLd";
 
@@ -29,7 +31,12 @@ export default function HomePage({
       <main id="main">
         <Hero content={c} />
 
-        {/* 01 — Studio */}
+        {/* 01 — Interactive Scope & Project Estimator (Lead Magnet) */}
+        <Reveal>
+          <ProjectEstimator estimator={c.estimator} contact={c.contact.info} />
+        </Reveal>
+
+        {/* 02 — Studio */}
         <section className="section" id="studio">
           <div className="container studio__grid">
             <Reveal>
@@ -53,7 +60,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 02 — Services */}
+        {/* 03 — Services */}
         <section className="section section--tint" id="services">
           <div className="container">
             <Reveal>
@@ -73,7 +80,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 03 — Tech Stack */}
+        {/* 04 — Tech Stack */}
         <section className="section" id="stack">
           <div className="container">
             <Reveal>
@@ -89,7 +96,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 04 — Projects */}
+        {/* 05 — Projects */}
         <section className="section section--tint" id="projects">
           <div className="container">
             <Reveal>
@@ -110,7 +117,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 05 — Advantages */}
+        {/* 06 — Advantages & Guarantees */}
         <section className="section" id="advantages">
           <div className="container">
             <Reveal>
@@ -134,7 +141,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 06 — Process */}
+        {/* 07 — Process */}
         <section className="section section--tint" id="process">
           <div className="container">
             <Reveal>
@@ -150,7 +157,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 07 — FAQ */}
+        {/* 08 — FAQ */}
         <section className="section" id="faq">
           <div className="container">
             <Reveal>
@@ -166,7 +173,7 @@ export default function HomePage({
           </div>
         </section>
 
-        {/* 08 — Client voices (optional) */}
+        {/* 09 — Client voices (optional) */}
         {c.visibility.testimonials && (
           <section className="section section--tint" id="testimonials">
             <div className="container">
@@ -189,7 +196,7 @@ export default function HomePage({
           </section>
         )}
 
-        {/* 09 — Contact */}
+        {/* 10 — Contact */}
         <section className="section section--ink" id="contact">
           <div className="container">
             <Reveal>
@@ -202,6 +209,7 @@ export default function HomePage({
             <Reveal>
               <ContactPanel
                 recipientEmail={c.contact.info.email}
+                contactInfo={c.contact.info}
                 labels={c.ui.contact}
                 formNote={c.contact.formNote}
                 ctaLabel={c.ctaLabel}
@@ -211,6 +219,7 @@ export default function HomePage({
         </section>
       </main>
       <SiteFooter content={c} current={current} />
+      <FloatingQuickContact contact={c.contact.info} locale={current} />
     </>
   );
 }

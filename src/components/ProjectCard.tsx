@@ -4,9 +4,9 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="project">
       <div className="project__meta">
-        <div>{project.industry}</div>
+        <div>[ {project.industry} ]</div>
         <div>
-          {project.client} · {project.year}
+          {project.client} // {project.year}
         </div>
       </div>
       <div>
@@ -22,7 +22,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       </div>
       <div className="project__result">
         {project.result}
-        <small>{project.placeholder ? "Sample" : "Outcome"}</small>
+        <small>{project.placeholder ? "Benchmark" : "Outcome"}</small>
       </div>
     </article>
   );
