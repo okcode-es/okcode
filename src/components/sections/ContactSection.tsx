@@ -14,6 +14,7 @@ import {
   CheckCircle2,
   AlertCircle,
   ExternalLink,
+  Loader2,
 } from "lucide-react";
 import type { Language, SiteContent } from "@/content/schema";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -50,6 +51,8 @@ const LABELS: Record<
     errName: string;
     errContact: string;
     errMessage: string;
+    errSendFailed: string;
+    btnSubmitting: string;
     formSuccessTitle: string;
     formSuccessOpenEmail: string;
     formReset: string;
@@ -84,6 +87,9 @@ const LABELS: Record<
     errName: "Por favor, introduce tu nombre o empresa.",
     errContact: "Por favor, introduce tu email o número de teléfono.",
     errMessage: "Por favor, cuéntanos brevemente sobre tu proyecto.",
+    errSendFailed:
+      "No se pudo enviar el mensaje automáticamente. Por favor, inténtalo de nuevo o contáctanos por WhatsApp o Email.",
+    btnSubmitting: "Enviando propuesta...",
     formSuccessTitle: "¡Mensaje recibido con éxito!",
     formSuccessOpenEmail: "Abrir cliente de correo con estos datos",
     formReset: "Enviar otra consulta",
@@ -118,6 +124,9 @@ const LABELS: Record<
     errName: "Please provide your name or company.",
     errContact: "Please provide your email or phone number.",
     errMessage: "Please provide a brief summary of your project.",
+    errSendFailed:
+      "Failed to send message automatically. Please try again or reach out directly via WhatsApp or Email.",
+    btnSubmitting: "Sending inquiry...",
     formSuccessTitle: "Message received successfully!",
     formSuccessOpenEmail: "Open email client with these details",
     formReset: "Send another inquiry",
@@ -152,6 +161,9 @@ const LABELS: Record<
     errName: "请填写您的称呼或公司名称。",
     errContact: "请填写至少一种联系方式（微信号、电话或邮箱）。",
     errMessage: "请简要描述您的项目想法或预期功能。",
+    errSendFailed:
+      "提交失败，请检查网络或直接通过微信 / WhatsApp / 邮件与我们联系。",
+    btnSubmitting: "正在提交需求...",
     formSuccessTitle: "需求已成功提交！",
     formSuccessOpenEmail: "在邮件客户端中打开此需求",
     formReset: "提交另一条咨询",
@@ -222,6 +234,8 @@ export function ContactSection({
     message?: string;
   }>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Copy states
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -243,7 +257,7 @@ export function ContactSection({
     }
   }
 
-  function handleFormSubmit(e: React.FormEvent) {
+  async function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
     const errors: typeof formErrors = {};
 
@@ -263,7 +277,41 @@ export function ContactSection({
     }
 
     setFormErrors({});
-    setIsSubmitted(true);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: SITE_CONFIG.web3formsAccessKey,
+          subject: `Nuevo proyecto OKCODE (${lang.toUpperCase()}) — ${name.trim()}`,
+          from_name: "OKCODE Web Inquiry",
+          name: name.trim(),
+          contact_method: contactMethod.trim(),
+          message: message.trim(),
+          language: lang,
+          page_url: typeof window !== "undefined" ? window.location.href : "https://okcode.es",
+          botcheck: "",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(data.message || currentLabels.errSendFailed);
+      }
+    } catch {
+      setSubmitError(currentLabels.errSendFailed);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   function handleResetForm() {
@@ -271,6 +319,7 @@ export function ContactSection({
     setContactMethod("");
     setMessage("");
     setFormErrors({});
+    setSubmitError(null);
     setIsSubmitted(false);
   }
 
@@ -503,6 +552,16 @@ export function ContactSection({
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} noValidate className="space-y-5">
+                {/* Web3Forms Honeypot spam protection */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
                 {/* Field 1: Name */}
                 <div>
                   <label
@@ -622,12 +681,39 @@ export function ContactSection({
                     type="submit"
                     variant="primary"
                     size="lg"
+                    disabled={isSubmitting}
                     className="w-full sm:w-auto font-medium"
                   >
-                    <span>{contact.form.submitButton}</span>
-                    <Send className="h-4 w-4 ml-2" />
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                        <span>{currentLabels.btnSubmitting}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>{contact.form.submitButton}</span>
+                        <Send className="h-4 w-4 ml-2" />
+                      </>
+                    )}
                   </Button>
                 </div>
+
+                {submitError && (
+                  <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-2.5">
+                    <AlertCircle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
+                    <div className="space-y-1">
+                      <p className="font-medium">{submitError}</p>
+                      <p className="text-slate-600">
+                        <a
+                          href={mailtoPrefilledUrl}
+                          className="underline hover:text-slate-900 font-semibold"
+                        >
+                          {currentLabels.formSuccessOpenEmail}
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                )}
               </form>
             )}
           </div>

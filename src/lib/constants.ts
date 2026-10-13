@@ -8,6 +8,7 @@ export const SITE_CONFIG = {
   wechatId: "okcode_",
   location: "Madrid, España",
   foundingYear: 2020,
+  web3formsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
 } as const;
 
 export type SiteConfig = typeof SITE_CONFIG;

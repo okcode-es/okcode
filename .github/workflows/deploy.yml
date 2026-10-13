@@ -37,6 +37,8 @@ jobs:
       - name: Build the static site
         # Next.js `output: export` writes to ./out (uploaded below).
         run: npm run build
+        env:
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
