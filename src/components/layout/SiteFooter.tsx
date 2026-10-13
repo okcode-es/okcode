@@ -27,6 +27,7 @@ const DEFAULT_LABELS: Record<
     contactHeading: string;
     navigationHeading: string;
     wechatLabel: string;
+    whatsappLabel: string;
     copied: string;
     backToTop: string;
     poeticTagline: string;
@@ -42,6 +43,7 @@ const DEFAULT_LABELS: Record<
     contactHeading: "Contacto Directo",
     navigationHeading: "Navegación",
     wechatLabel: "WeChat",
+    whatsappLabel: "WhatsApp Directo",
     copied: "¡Copiado!",
     backToTop: "Volver arriba",
     poeticTagline: "Por el oficio de crear buen software · Madrid · 2026",
@@ -56,6 +58,7 @@ const DEFAULT_LABELS: Record<
     contactHeading: "Direct Contact",
     navigationHeading: "Navigation",
     wechatLabel: "WeChat",
+    whatsappLabel: "WhatsApp Direct",
     copied: "Copied!",
     backToTop: "Back to top",
     poeticTagline: "Por el oficio de crear buen software · Madrid · 2026",
@@ -70,6 +73,7 @@ const DEFAULT_LABELS: Record<
     contactHeading: "直接联系",
     navigationHeading: "快捷导航",
     wechatLabel: "微信咨询",
+    whatsappLabel: "WhatsApp 在线咨询",
     copied: "已复制！",
     backToTop: "返回顶部",
     poeticTagline: "Por el oficio de crear buen software · Madrid · 2026",
@@ -218,7 +222,9 @@ export function SiteFooter({ lang, footer, nav, className }: SiteFooterProps) {
                     className="w-4 h-4 text-emerald-600 group-hover:text-emerald-700 transition-colors shrink-0"
                     aria-hidden="true"
                   />
-                  <span>WhatsApp: {SITE_CONFIG.whatsappNumber}</span>
+                  <span className="underline decoration-slate-300 underline-offset-4 group-hover:decoration-slate-900 font-sans">
+                    {labels.whatsappLabel}
+                  </span>
                 </a>
               </li>
 

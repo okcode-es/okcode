@@ -35,6 +35,7 @@ const LABELS: Record<
     waTitle: string;
     waSubtitle: string;
     waCta: string;
+    waBadge: string;
     wechatTitle: string;
     wechatSubtitle: string;
     wechatCta: string;
@@ -70,6 +71,7 @@ const LABELS: Record<
     waTitle: "WhatsApp Directo",
     waSubtitle: "Respuesta rápida para resolver dudas o solicitar un presupuesto preliminar.",
     waCta: "Abrir WhatsApp",
+    waBadge: "Directo",
     wechatTitle: "WeChat / 微信",
     wechatSubtitle: "Escanea el código QR o añade @okcode_es para soporte directo en español o chino.",
     wechatCta: "Ver Código QR",
@@ -107,6 +109,7 @@ const LABELS: Record<
     waTitle: "WhatsApp Direct",
     waSubtitle: "Rapid response for clarifying questions and preliminary cost estimates.",
     waCta: "Open WhatsApp",
+    waBadge: "Direct",
     wechatTitle: "WeChat / 微信",
     wechatSubtitle: "Scan the QR code or add @okcode_es for direct bilingual support.",
     wechatCta: "View QR Code",
@@ -144,6 +147,7 @@ const LABELS: Record<
     waTitle: "WhatsApp 在线咨询",
     waSubtitle: "实时在线沟通，快速解答业务疑问与初步预算评估。",
     waCta: "打开 WhatsApp",
+    waBadge: "在线直联",
     wechatTitle: "微信咨询（WeChat）",
     wechatSubtitle: "扫码添加工程师微信，支持中西英三语，随时一对一咨询。",
     wechatCta: "扫码添加微信",
@@ -371,16 +375,25 @@ export function ContactSection({
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-600 shadow-2xs group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 transition-colors">
                   <WhatsAppIcon className="h-5 w-5" />
                 </div>
-                
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/70 rounded px-2 py-0.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  {currentLabels.waBadge}
+                </span>
               </div>
 
               <div className="mt-5">
                 <h3 className="text-lg font-bold tracking-tight text-slate-900 group-hover:text-slate-950 transition-colors">
                   {currentLabels.waTitle}
                 </h3>
-                <p className="mt-1 font-mono text-sm font-semibold text-emerald-700">
-                  {contact.whatsappText}
-                </p>
+                <a
+                  href={SITE_CONFIG.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800 hover:underline transition-colors group/wa"
+                >
+                  <span>{contact.whatsappText}</span>
+                  <ExternalLink className="h-3.5 w-3.5 opacity-80 group-hover/wa:opacity-100 transition-opacity" />
+                </a>
                 <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
                   {currentLabels.waSubtitle}
                 </p>

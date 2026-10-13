@@ -384,7 +384,7 @@ export const zhContent: SiteContent = {
     heading: '准备好启动你的新网站或 App 了吗？',
     subheading: '今天就告诉我们你的想法，24 小时内免费获取方案梳理与详细报价。',
     email: 'info@okcode.es',
-    whatsappText: '+34684 252 130',
+    whatsappText: '点击直接发起对话',
     wechatLabel: '微信咨询: okcode_ (扫码快速沟通)',
     locationText: '西班牙马德里（Madrid, Spain） · 承接全球项目',
     copyPromptLabel: '快捷复制咨询模板',

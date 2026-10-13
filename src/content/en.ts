@@ -395,7 +395,7 @@ export const enContent: SiteContent = {
     subheading:
       'Share your vision with us today and receive a structured technical breakdown and transparent estimate within 24 hours.',
     email: 'info@okcode.es',
-    whatsappText: '+34 684 252 130',
+    whatsappText: 'Start direct chat',
     wechatLabel: 'WeChat: okcode_ (Scan QR code)',
     locationText: 'Madrid, Spain · Global Delivery',
     copyPromptLabel: 'Quick Project Brief Template',

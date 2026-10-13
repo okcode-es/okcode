@@ -43,7 +43,6 @@ export function getProfessionalServiceSchema(lang: Language = "es") {
     logo: `${SITE_CONFIG.url}/ok-logo-mark.webp`,
     image: `${SITE_CONFIG.url}/og.svg`,
     email: SITE_CONFIG.email,
-    telephone: SITE_CONFIG.whatsappNumber,
     description: content.meta.description,
     priceRange: "€€",
     foundingDate: `${SITE_CONFIG.foundingYear}`,

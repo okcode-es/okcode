@@ -395,7 +395,7 @@ export const esContent: SiteContent = {
     subheading:
       'Cuéntanos tu proyecto hoy mismo y recibe una valoración técnica y propuesta detallada en menos de 24 horas.',
     email: 'info@okcode.es',
-    whatsappText: '+34 684 252 130',
+    whatsappText: 'Iniciar chat directo',
     wechatLabel: 'WeChat: okcode_ (escanea código QR)',
     locationText: 'Madrid, España · Cobertura internacional',
     copyPromptLabel: 'Plantilla de mensaje rápido',
